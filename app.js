@@ -1,7 +1,7 @@
 const i18n = {
   fa: {
     title:"ATLAS CLUB — باشگاه تمرین و تندرستی",nav_method:"باشگاه",nav_programs:"برنامه‌ها",nav_progress:"پیشرفت",nav_fuel:"خوراک و بازیابی",nav_cta:"جلسهٔ آشنایی",
-    hero_status:"فضا برای حرکت",hero_kicker:"تمرین، همراهی، تداوم",hero_title:"قدرتی که<br><em>از تو شروع می‌شود.</em>",hero_copy:"تمرین هدفمند، برنامهٔ شخصی و همراهی مربی؛ در فضایی که برای زندگی واقعی طراحی شده.",hero_cta:"مسیرم را شروع کنم",hero_link:"با اطلس آشنا شو",hero_side:"یک قدم، بعد قدم بعدی.",scroll_discover:"برای کشف اسکرول کن",ticker_a:"تمرین با هدف",ticker_b:"پیشرفت در ریتم تو",
+    hero_status:"فضا برای حرکت",hero_kicker:"تمرین، همراهی، تداوم",hero_title:"قدرتی که<br><em>از تو شروع می‌شود.</em>",hero_copy:"تمرین هدفمند، برنامهٔ شخصی و همراهی مربی؛ در فضایی که برای زندگی واقعی طراحی شده.",hero_cta:"مسیرم را شروع کنم",hero_link:"با اطلس آشنا شو",hero_side:"یک قدم، بعد قدم بعدی.",scroll_discover:"برای کشف اسکرول کن",ticker_a:"تمرین با هدف",ticker_b:"پیشرفت در ریتم تو",program_link:"دیدن برنامهٔ کلاس‌ها",
     method_kicker:"روش اطلس",method_title:"بدنِ قوی‌تر،<br><em>با مسیر خودت.</em>",method_copy:"قرار نیست زندگی‌ات دور تمرین بچرخد. ما برنامه و همراهی را طوری کنار هم می‌گذاریم که حرکت‌کردن به بخشی از زندگی‌ات تبدیل شود؛ آرام، پیوسته و قابل‌اندازه‌گیری.",method_link:"مسیر تمرین را ببین",p1_title:"هدف روشن",p1_copy:"برنامه‌ای متناسب با زمان، سطح و هدف تو.",p2_title:"مربی همراه",p2_copy:"بازخورد انسانی؛ با احترام به ریتم پیشرفتت.",p3_title:"پیشرفت قابل‌دیدن",p3_copy:"عادت و تلاش را دنبال کن؛ بدون مسابقه با دیگران.",
     journey_kicker:"از شروع تا تداوم",route_label:"مسیر نمونه",route_step:"از ۰۳ مرحله",route_foot:"قدم بعدی با توست",route_title_0:"نقطهٔ شروع تو",route_desc_0:"هدف، زمان و سطح فعلی را مشخص می‌کنیم تا مسیر از جای درست شروع شود.",route_title_1:"تمرین با همراهی",route_desc_1:"جلسه‌ها و بازخورد مربی را با ریتم زندگی‌ات هماهنگ می‌کنیم.",route_title_2:"پیشرفت پیوسته",route_desc_2:"تلاش را ثبت کن، بازیابی را جدی بگیر و قدم بعد را آگاهانه انتخاب کن.",step_kicker_0:"START / شناخت",step_title_0:"از وضعیت امروز شروع کن.",step_copy_0:"هدف و تجربه‌ات را مرور کن. برنامه از تو شروع می‌شود؛ نه از یک نسخهٔ آماده.",step_kicker_1:"BUILD / تمرین",step_title_1:"ریتمی بساز که می‌ماند.",step_copy_1:"جلسه‌ها و همراهی مربی را با برنامهٔ هفتگی هماهنگ کن.",step_kicker_2:"GROW / ادامه",step_title_2:"پیشرفت را با خودت بسنج.",step_copy_2:"تمرین و بازیابی را ثبت کن و با مربی دربارهٔ قدم بعدی حرف بزن.",
     program_kicker:"شیوه‌های تمرین",program_title:"برای قدرت،<br><em>برای حرکت، برای تو.</em>",program_copy:"فضا و کلاس را بر اساس هدف و احساست انتخاب کن. برنامهٔ نهایی با مربی و شرایط واقعی باشگاه هماهنگ می‌شود.",program_tag_1:"تمرین مقاومتی",program_1:"قدرت و آمادگی",program_1_copy:"تمرین مرحله‌ای برای ساختن پایهٔ قوی.",program_tag_2:"حرکت و بازیابی",program_2:"تعادل و تحرک",program_2_copy:"جلسه‌هایی برای انعطاف و کنترل حرکت.",program_tag_3:"با هم تمرین کنیم",program_3:"جلسهٔ گروهی",program_3_copy:"تمرین همراه با انرژی جمع و هدایت مربی.",program_note:"عکس‌ها از منابع رایگان Pexels هستند؛ ساعت‌ها و کلاس‌ها باید با اطلاعات باشگاه جایگزین شوند.",
@@ -14,7 +14,7 @@ const i18n = {
   },
   en: {
     title:"ATLAS CLUB — Training & Wellbeing",nav_method:"The club",nav_programs:"Programs",nav_progress:"Progress",nav_fuel:"Fuel & recovery",nav_cta:"Meet the club",
-    hero_status:"Room to move",hero_kicker:"TRAIN · SUPPORT · REPEAT",hero_title:"Strength that<br><em>starts with you.</em>",hero_copy:"Intentional training, a personal plan and a coach beside you—in a space made for real life.",hero_cta:"Start my path",hero_link:"Discover ATLAS",hero_side:"One step, then the next.",scroll_discover:"Scroll to explore",ticker_a:"TRAIN WITH PURPOSE",ticker_b:"PROGRESS AT YOUR PACE",
+    hero_status:"Room to move",hero_kicker:"TRAIN · SUPPORT · REPEAT",hero_title:"Strength that<br><em>starts with you.</em>",hero_copy:"Intentional training, a personal plan and a coach beside you—in a space made for real life.",hero_cta:"Start my path",hero_link:"Discover ATLAS",hero_side:"One step, then the next.",scroll_discover:"Scroll to explore",ticker_a:"TRAIN WITH PURPOSE",ticker_b:"PROGRESS AT YOUR PACE",program_link:"View class schedule",
     method_kicker:"THE ATLAS METHOD",method_title:"A stronger body,<br><em>on your own path.</em>",method_copy:"Life does not have to revolve around training. We bring the plan and the support together so movement can become part of your everyday: steady, sustainable and visible.",method_link:"See the training path",p1_title:"A clear goal",p1_copy:"A plan shaped around your time, level and goals.",p2_title:"A coach beside you",p2_copy:"Human feedback that respects your pace.",p3_title:"Visible progress",p3_copy:"Follow your effort and habits, without comparing yourself to others.",
     journey_kicker:"FROM START TO STEADY",route_label:"SAMPLE PATH",route_step:"OF 03 STEPS",route_foot:"The next step is yours",route_title_0:"Your starting point",route_desc_0:"Set your goal, schedule and current level so the path starts in the right place.",route_title_1:"Training with support",route_desc_1:"Shape sessions and coach feedback around the rhythm of your life.",route_title_2:"Steady progress",route_desc_2:"Track your work, make room for recovery and choose the next step with intention.",step_kicker_0:"START / GET TO KNOW YOU",step_title_0:"Begin where you are.",step_copy_0:"Review your goals and experience. The plan starts with you, not a one-size-fits-all template.",step_kicker_1:"BUILD / TRAIN",step_title_1:"Create a rhythm that lasts.",step_copy_1:"Fit sessions and coach support into a weekly routine.",step_kicker_2:"GROW / CONTINUE",step_title_2:"Measure progress against yourself.",step_copy_2:"Track training and recovery, then discuss the next step with your coach.",
     program_kicker:"WAYS TO TRAIN",program_title:"For strength,<br><em>movement, and you.</em>",program_copy:"Choose a space and class for your goals and how you feel. A real plan is shaped with the coach and the club's actual offering.",program_tag_1:"RESISTANCE",program_1:"Strength & conditioning",program_1_copy:"Progressive training for a strong foundation.",program_tag_2:"MOVE & RECOVER",program_2:"Mobility & balance",program_2_copy:"Sessions for flexibility and controlled movement.",program_tag_3:"TRAIN TOGETHER",program_3:"Group sessions",program_3_copy:"Shared energy with guidance from a coach.",program_note:"Photos are from Pexels; actual class times and availability need the club details.",
@@ -27,7 +27,7 @@ const i18n = {
   },
   ar: {
     title:"نادي أطلس — التدريب والعافية",nav_method:"النادي",nav_programs:"البرامج",nav_progress:"التقدم",nav_fuel:"التغذية والتعافي",nav_cta:"تعرّف على النادي",
-    hero_status:"مساحة للحركة",hero_kicker:"تدريب · دعم · استمرارية",hero_title:"قوةٌ<br><em>تبدأ منك.</em>",hero_copy:"تدريب هادف وخطة شخصية ومدرب إلى جانبك، في مساحة صُممت للحياة اليومية.",hero_cta:"ابدأ مساري",hero_link:"اكتشف أطلس",hero_side:"خطوة ثم التي تليها.",scroll_discover:"مرّر للاستكشاف",ticker_a:"تدريب بهدف",ticker_b:"تقدم على إيقاعك",
+    hero_status:"مساحة للحركة",hero_kicker:"تدريب · دعم · استمرارية",hero_title:"قوةٌ<br><em>تبدأ منك.</em>",hero_copy:"تدريب هادف وخطة شخصية ومدرب إلى جانبك، في مساحة صُممت للحياة اليومية.",hero_cta:"ابدأ مساري",hero_link:"اكتشف أطلس",hero_side:"خطوة ثم التي تليها.",scroll_discover:"مرّر للاستكشاف",ticker_a:"تدريب بهدف",ticker_b:"تقدم على إيقاعك",program_link:"عرض جدول الحصص",
     method_kicker:"منهج أطلس",method_title:"جسد أقوى،<br><em>ومسارك الخاص.</em>",method_copy:"لا ينبغي أن تدور حياتك حول التدريب. نجمع الخطة والدعم لتصبح الحركة جزءاً من يومك؛ بهدوء واستمرارية وتقدم تراه.",method_link:"شاهد مسار التدريب",p1_title:"هدف واضح",p1_copy:"خطة تناسب وقتك ومستواك وأهدافك.",p2_title:"مدرب إلى جانبك",p2_copy:"توجيه إنساني يحترم إيقاع تقدمك.",p3_title:"تقدم تراه",p3_copy:"تابع جهدك وعاداتك دون مقارنة نفسك بالآخرين.",
     journey_kicker:"من البداية إلى الاستمرار",route_label:"مسار تجريبي",route_step:"من ٠٣ خطوات",route_foot:"الخطوة التالية لك",route_title_0:"نقطة انطلاقك",route_desc_0:"حدّد هدفك ووقتك ومستواك الحالي لتبدأ من المكان المناسب.",route_title_1:"تدريب مع دعم",route_desc_1:"نسّق الجلسات وملاحظات المدرب مع إيقاع حياتك.",route_title_2:"تقدم مستمر",route_desc_2:"سجّل جهدك وامنح التعافي وقته، ثم اختر خطوتك التالية بوعي.",step_kicker_0:"ابدأ / تعرّف",step_title_0:"ابدأ من حيث أنت.",step_copy_0:"راجع أهدافك وخبرتك. تبدأ الخطة بك، لا بنموذج واحد للجميع.",step_kicker_1:"ابنِ / تدرّب",step_title_1:"اصنع إيقاعاً يدوم.",step_copy_1:"نسّق الجلسات ودعم المدرب مع جدول أسبوعك.",step_kicker_2:"تقدّم / واصل",step_title_2:"قِس تقدمك مقارنة بنفسك.",step_copy_2:"تابع التدريب والتعافي، ثم ناقش الخطوة التالية مع مدربك.",
     program_kicker:"طرق التدريب",program_title:"للقوة،<br><em>والحركة، ولك.</em>",program_copy:"اختر المساحة والحصة وفق هدفك وشعورك. وتُنسّق الخطة الفعلية مع المدرب وعروض النادي الحقيقية.",program_tag_1:"تدريب مقاومة",program_1:"القوة واللياقة",program_1_copy:"تدريب تدريجي لبناء أساس قوي.",program_tag_2:"حركة وتعافٍ",program_2:"المرونة والتوازن",program_2_copy:"جلسات للمرونة والتحكم بالحركة.",program_tag_3:"تدرّبوا معاً",program_3:"جلسات جماعية",program_3_copy:"طاقة مشتركة بإشراف المدرب.",program_note:"الصور من مصادر Pexels المجانية؛ وتحتاج مواعيد الحصص إلى بيانات النادي الفعلية.",
@@ -61,19 +61,7 @@ function setLanguage(lang) {
   renderDashboard();
   updateRoute(currentStep);
   updateModalHeading();
-  if (typeof chapterButtons !== "undefined") {
-    chapterNav.setAttribute("aria-label", activeLang === "fa" ? "پیمایش بخش‌های صفحه" : activeLang === "ar" ? "التنقل بين أقسام الصفحة" : "Page sections");
-    chapterButtons.forEach((button, index) => {
-      const title = chapterSections[index]?.querySelector("h1,h2")?.textContent.trim().replace(/\s+/g, " ") || `Section ${index + 1}`;
-      button.setAttribute("aria-label", title);
-      button.title = title;
-    });
-    const activeChapter = chapterButtons.findIndex((button) => button.hasAttribute("aria-current"));
-    if (activeChapter >= 0) chapterLabel.textContent = chapterButtons[activeChapter].title;
-  }
-  if (typeof reminderSet !== "undefined" && byId("reminder-button")) {
-    byId("reminder-button").innerHTML = `<span>${translate(reminderSet ? "remind_done" : "remind")}</span><span>${reminderSet ? "✓" : "＋"}</span>`;
-  }
+  if (typeof reminderSet !== "undefined" && byId("reminder-button")) byId("reminder-button").textContent = translate(reminderSet ? "remind_done" : "remind");
   try { localStorage.setItem("atlas-lang", activeLang); } catch {}
   document.querySelectorAll("iframe[data-atlas-timer]").forEach((frame) => {
     frame.contentWindow?.postMessage({ type: "atlas-language", lang: activeLang }, location.origin);
@@ -123,11 +111,9 @@ function updateRoute(index) {
   document.querySelectorAll("[data-route-node]").forEach((node) => node.classList.toggle("is-active", Number(node.dataset.routeNode) <= currentStep));
   document.querySelectorAll("[data-step]").forEach((step) => step.classList.toggle("is-active", Number(step.dataset.step) === currentStep));
   if (previousStep !== currentStep && !reducedMotion && window.gsap) {
-    const direction = currentStep > previousStep ? 1 : -1;
     const copy = card.querySelector(".route-copy");
     window.gsap.killTweensOf([card, copy]);
-    window.gsap.fromTo(card, { rotationX: 4, rotationY: direction * 11, z: -54, autoAlpha: .78 }, { rotationX: 0, rotationY: 0, z: 0, autoAlpha: 1, duration: .72, ease: "power3.out", clearProps: "transform,opacity,visibility" });
-    window.gsap.fromTo(copy, { y: 20, rotationX: -10, opacity: .42 }, { y: 0, rotationX: 0, opacity: 1, duration: .56, ease: "power3.out" });
+    window.gsap.fromTo(copy, { y: 10, opacity: .55 }, { y: 0, opacity: 1, duration: .42, ease: "power2.out" });
   }
 }
 if ("IntersectionObserver" in window && !reducedMotion) {
@@ -139,74 +125,27 @@ if ("IntersectionObserver" in window && !reducedMotion) {
 }
 
 let scrollFrame = 0;
-const chapterSections = [...document.querySelectorAll("main > section[id], main > section.hero")];
-const chapterNav = document.createElement("nav");
-chapterNav.className = "chapter-nav";
-chapterNav.setAttribute("aria-label", "Page sections");
-chapterNav.innerHTML = `<span class="chapter-nav-label" aria-hidden="true"></span><div class="chapter-nav-track"></div>`;
-const chapterTrack = chapterNav.querySelector(".chapter-nav-track");
-const chapterButtons = chapterSections.map((section, index) => {
-  if (!section.id) section.id = "hero";
-  section.classList.add("scroll-chapter");
-  const seam = document.createElement("span");
-  seam.className = "chapter-seam";
-  seam.setAttribute("aria-hidden", "true");
-  if (index) section.prepend(seam);
-  const button = document.createElement("a");
-  button.className = "chapter-nav-stop";
-  button.href = `#${section.id}`;
-  button.setAttribute("aria-label", section.querySelector("h1,h2")?.textContent.trim().replace(/\s+/g, " ") || `Section ${index + 1}`);
-  button.title = button.getAttribute("aria-label");
-  button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span>`;
-  chapterTrack.append(button);
-  return button;
-});
-document.body.append(chapterNav);
-const chapterLabel = chapterNav.querySelector(".chapter-nav-label");
-function setActiveChapter(index) {
-  chapterButtons.forEach((button, i) => {
-    if (i === index) button.setAttribute("aria-current", "location");
-    else button.removeAttribute("aria-current");
-  });
-  const active = chapterButtons[index];
-  if (active) chapterLabel.textContent = active.title;
-}
-if ("IntersectionObserver" in window) {
-  const chapterObserver = new IntersectionObserver((entries) => {
-    const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (active) setActiveChapter(chapterSections.indexOf(active.target));
-  }, { threshold: [.15, .3, .5, .7], rootMargin: "-16% 0px -38% 0px" });
-  chapterSections.forEach((section) => chapterObserver.observe(section));
-}
-chapterButtons.forEach((button, index) => button.addEventListener("click", () => setActiveChapter(index)));
-setActiveChapter(0);
 const motionGsap = window.gsap;
 const motionClamp = motionGsap?.utils?.clamp || ((min, max, value) => Math.max(min, Math.min(max, value)));
-const programCards = [...document.querySelectorAll(".program-card")];
+const scrollPhotos = [...document.querySelectorAll("[data-scroll-photo]")];
 const heroPhoto = document.querySelector(".hero-photo");
-const heroOrbit = document.querySelector(".hero-orbit");
+if (!reducedMotion) scrollPhotos.forEach((photo) => motionGsap?.set(photo, { clipPath: "inset(0 42% 0 42%)", scale: 1.035, transformOrigin: "center" }));
 function updateScrollMotion() {
   if (reducedMotion || !motionGsap) return;
   const vh = Math.max(1, innerHeight);
-  programCards.forEach((card, index) => {
-    let documentTop = 0;
-    for (let node = card; node; node = node.offsetParent) documentTop += node.offsetTop;
-    const progress = motionClamp(0, 1, (scrollY + vh - documentTop) / (vh * .72));
-    const side = index - (programCards.length - 1) / 2;
-    motionGsap.set(card, {
-      x: side * 76 * (1 - progress), y: 74 * (1 - progress), z: -100 * (1 - progress),
-      rotationX: 17 * (1 - progress), rotationY: -side * 13 * (1 - progress),
-      scale: .88 + .12 * progress, force3D: true
+  scrollPhotos.forEach((photo, index) => {
+    const rect = photo.getBoundingClientRect();
+    const progress = motionClamp(0, 1, (vh * .88 - rect.top) / (vh * .58) - index * .06);
+    const inset = (1 - progress) * 42;
+    motionGsap.set(photo, {
+      clipPath: `inset(0 ${inset.toFixed(1)}% 0 ${inset.toFixed(1)}%)`,
+      scale: 1.035 - progress * .035,
+      force3D: true
     });
-    const photo = card.querySelector(".program-photo");
-    if (photo) motionGsap.set(photo, { z: 22, x: side * 5 * (1 - progress), y: 12 * (1 - progress), scale: 1.1 - .1 * progress, force3D: true });
   });
-  if (heroPhoto && heroOrbit) {
-    const heroRect = document.querySelector(".hero")?.getBoundingClientRect();
-    const progress = heroRect ? motionClamp(0, 1, -heroRect.top / Math.max(1, heroRect.height * .72)) : 0;
-    motionGsap.set(heroPhoto, { y: -42 * progress, scale: 1.04 + .045 * progress, force3D: true });
-    motionGsap.set(heroOrbit, { rotationX: 62, rotationY: -8 + progress * 28, rotationZ: -24 + progress * 76, y: -36 * progress, scale: 1 + progress * .2, autoAlpha: 1 - progress * .48, force3D: true });
-  }
+  const heroRect = document.querySelector(".hero")?.getBoundingClientRect();
+  const heroProgress = heroRect ? motionClamp(0, 1, -heroRect.top / Math.max(1, heroRect.height)) : 0;
+  if (heroPhoto) motionGsap.set(heroPhoto, { y: -24 * heroProgress, scale: 1.035 + .025 * heroProgress, force3D: true });
 }
 window.addEventListener("scroll", () => {
   if (scrollFrame) return;
@@ -214,13 +153,6 @@ window.addEventListener("scroll", () => {
     const max = document.documentElement.scrollHeight - innerHeight;
     const progress = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
     byId("read-progress").style.transform = `scaleX(${progress})`;
-    chapterSections.forEach((section) => {
-      const seam = section.querySelector(":scope > .chapter-seam");
-      if (!seam || reducedMotion) return;
-      const rect = section.getBoundingClientRect();
-      const phase = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight + rect.height * .32)));
-      seam.style.setProperty("--seam-progress", phase.toFixed(3));
-    });
     updateScrollMotion();
     scrollFrame = 0;
   });
@@ -297,7 +229,7 @@ renderSchedule(0); renderDashboard();
 let reminderSet = false;
 byId("reminder-button").addEventListener("click", () => {
   reminderSet = !reminderSet;
-  byId("reminder-button").innerHTML = `<span>${translate(reminderSet ? "remind_done" : "remind")}</span><span>${reminderSet ? "✓" : "＋"}</span>`;
+  byId("reminder-button").textContent = translate(reminderSet ? "remind_done" : "remind");
 });
 
 let cartCount = 0;
