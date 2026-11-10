@@ -1,0 +1,97 @@
+<!doctype html>
+<!--
+  "The gym rest timer with the set that logs itself" from Animorio · https://animorio.com
+  License: free on your own sites and your clients’ sites, paid work included.
+  Not for resale, redistribution, templates or code collections · https://animorio.com/en/license/
+-->
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تایمر تمرین اطلس</title>
+  <style>@font-face{font-family:'Mona Sans Variable';src:url('../../fonts/Manrope-wght.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}</style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" data-stage>
+    <span class="stage__glow stage__glow--warm" data-glow-warm aria-hidden="true"></span>
+    <span class="stage__glow stage__glow--go" data-glow-go aria-hidden="true"></span>
+
+    <!-- the rest timer widget of a strength training app: a card of smoked glass. On top the exercise and the sets of
+         it as small capsules; in the middle a dial of thin ticks around the weight of the next set or, while resting,
+         the time left with digits that roll; under it the heart rate coming down and the volume of the day; at the
+         bottom minus 15, the main button and plus 15 -->
+    <article class="rest" data-card aria-label="Rest timer">
+      <span class="rest__edge" aria-hidden="true"></span>
+      <span class="rest__grain" aria-hidden="true"></span>
+
+      <header class="rest__head">
+        <div class="rest__titles">
+          <p class="rest__day" data-day>جلسهٔ قدرت</p>
+          <h2 class="rest__ex"><span class="rest__ex-in" data-ex>پرس سینه</span></h2>
+        </div>
+        <div class="rest__sets" data-sets aria-label="Sets"></div>
+      </header>
+
+      <div class="rest__dial" data-dial>
+        <svg class="rest__glowarc" viewBox="0 0 220 220" aria-hidden="true">
+          <path data-glowarc pathLength="1" d=""/>
+        </svg>
+        <svg class="rest__ticks" viewBox="0 0 220 220" aria-hidden="true">
+          <g data-ticks-off></g>
+          <g data-ticks-on></g>
+          <line class="rest__lead" data-lead x1="110" y1="4" x2="110" y2="22"/>
+        </svg>
+
+        <div class="rest__center">
+          <p class="rest__label"><span data-label>ست بعدی</span></p>
+          <div class="rest__big">
+            <p class="rest__weight" data-weight><span class="rest__kg" data-kg>80</span><span class="rest__unit" data-unit>کیلوگرم</span></p>
+            <p class="rest__time" data-time aria-hidden="true"></p>
+          </div>
+          <p class="rest__sub"><span data-sub>۸ تکرار · RPE 8</span></p>
+        </div>
+      </div>
+
+      <div class="rest__meta">
+          <span class="rest__stat">
+          <svg class="rest__heart" data-heart viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.4S2.2 9.9 2.2 6.1A2.9 2.9 0 0 1 8 4.6a2.9 2.9 0 0 1 5.8 1.5c0 3.8-5.8 7.3-5.8 7.3z"/></svg>
+          <span class="rest__num" data-hr>128</span><span class="rest__small" data-bpm>ضربان</span>
+        </span>
+        <span class="rest__stat rest__stat--right">
+          <span class="rest__small" data-volume>حجم تمرین</span><span class="rest__num" data-vol>1,280</span><span class="rest__small" data-volume-unit>kg</span>
+        </span>
+      </div>
+
+      <footer class="rest__actions">
+        <button class="rest__side" type="button" data-minus aria-label="۱۵ ثانیه از استراحت کم کن" disabled>
+          <span class="rest__side-face" data-face>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8h8"/></svg>
+            <span data-step-a>15</span>
+          </span>
+        </button>
+        <button class="rest__main" type="button" data-main data-autoclic>
+          <span class="rest__main-face" data-face>
+            <span class="rest__main-shine" data-shine aria-hidden="true"></span>
+            <svg class="rest__main-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path class="rest__check" data-check pathLength="1" d="M3.4 8.4l3 3 6.2-6.6"/>
+              <path class="rest__skip" data-skip d="M4 4.2L7.8 8 4 11.8M8.6 4.2L12.4 8 8.6 11.8"/>
+            </svg>
+            <span class="rest__main-words"><span data-words>ثبت ست</span></span>
+          </span>
+        </button>
+        <button class="rest__side" type="button" data-plus aria-label="۱۵ ثانیه به استراحت اضافه کن" disabled>
+          <span class="rest__side-face" data-face>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8h8M8 4v8"/></svg>
+            <span data-step-b>15</span>
+          </span>
+        </button>
+      </footer>
+    </article>
+    <p class="sr" aria-live="polite" data-live></p>
+  </main>
+
+  <script src="../../vendor/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

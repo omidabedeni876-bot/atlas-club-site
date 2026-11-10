@@ -1,0 +1,504 @@
+/*
+  "The gym rest timer with the set that logs itself" from Animorio · https://animorio.com
+  License: free on your own sites and your clients’ sites, paid work included.
+  Not for resale, redistribution, templates or code collections · https://animorio.com/en/license/
+*/
+/* The gym rest timer: a card of smoked glass on a near black page, with two soft lights behind it (amber while
+   resting, lime when it is time to lift) that the glass blurs. Every piece moved by GSAP is its own element; the
+   CSS transforms stay on their children. */
+:root { --rest:#cfad66; --go:#a44642; }
+body { min-height:0; }
+.stage { min-height:620px; padding:10px; }
+@media (max-width:560px) { .stage { min-height:590px; padding:8px; } }
+:root {
+  --page: #08090a;          /* the page */
+  --ink: #f1f1ee;           /* the words */
+  --muted: #8b8c88;         /* the small words */
+  --faint: rgba(255, 255, 255, 0.11); /* the ticks that are off, the empty sets */
+  --rest: #ff9a4a;          /* the colour of the rest */
+  --go: #c8f26a;            /* the colour of the set: time to lift */
+  --button: #f3f3ef;        /* the main button */
+  --button-ink: #0b0c0b;    /* the words on it */
+  --acc: #c8f26a;           /* the colour of the moment (moved by the script between the two above) */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+html,
+body {
+  margin: 0;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100svh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: 'Mona Sans Variable', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.stage {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* the two lights behind the glass */
+.stage__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(70vw, 52vh, 360px);
+  height: min(70vw, 52vh, 360px);
+  margin: calc(min(70vw, 52vh, 360px) / -2) 0 0 calc(min(70vw, 52vh, 360px) / -2);
+  border-radius: 50%;
+  filter: blur(min(12vw, 8vh, 56px));
+  pointer-events: none;
+  z-index: -1;
+}
+
+.stage__glow--warm {
+  background: radial-gradient(circle at 40% 40%, var(--rest), transparent 68%);
+  opacity: 0;
+}
+
+.stage__glow--go {
+  background: radial-gradient(circle at 60% 60%, var(--go), transparent 68%);
+  opacity: 0.22;
+}
+
+/* the card */
+.rest {
+  --dial: min(52vw, 33vh, 196px);
+  position: relative;
+  width: min(86vw, 324px);
+  padding: clamp(14px, 3.6vh, 20px) clamp(14px, 4.6vw, 20px) clamp(14px, 3.4vh, 18px);
+  border-radius: 28px;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, 0.075), transparent 60%),
+    linear-gradient(180deg, rgba(28, 29, 30, 0.72), rgba(14, 15, 16, 0.82));
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 1px 1px rgba(0, 0, 0, 0.4),
+    0 12px 24px -8px rgba(0, 0, 0, 0.55),
+    0 40px 80px -30px rgba(0, 0, 0, 0.9);
+  opacity: 0;
+}
+
+/* the edge: a 1px gradient line, brighter where the light of the moment touches it */
+.rest__edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0.02) 62%, color-mix(in srgb, var(--acc) 38%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+.rest__grain {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+}
+
+/* the head: the exercise and its sets */
+.rest__head {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rest__titles {
+  min-width: 0;
+}
+
+.rest__day {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.rest__ex {
+  margin: 3px 0 0;
+  font-size: 17px;
+  line-height: 1.15;
+  font-weight: 600;
+  font-variation-settings: 'wdth' 106;
+  letter-spacing: -0.005em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.rest__ex-in {
+  display: inline-block;
+}
+
+.rest__sets {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 4px;
+  flex: none;
+}
+
+.rest__set {
+  position: relative;
+  width: 16px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--faint);
+  overflow: hidden;
+}
+
+/* the set you are on: an outline of the colour of the moment */
+.rest__set.is-now {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acc) 70%, transparent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.rest__set-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 82%, #fff), var(--acc));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* the dial */
+.rest__dial {
+  position: relative;
+  width: var(--dial);
+  height: var(--dial);
+  margin: clamp(6px, 2vh, 14px) auto 0;
+  display: grid;
+  place-items: center;
+}
+
+.rest__glowarc,
+.rest__ticks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.rest__glowarc {
+  filter: blur(calc(var(--dial) * 0.045));
+  opacity: 0.6;
+}
+
+.rest__glowarc path {
+  fill: none;
+  stroke: var(--acc);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 0 1;
+}
+
+.rest__ticks line {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+[data-ticks-off] line {
+  stroke: var(--faint);
+}
+
+[data-ticks-on] line {
+  stroke: var(--acc);
+}
+
+.rest__lead {
+  stroke: #fff;
+  stroke-width: 2.6;
+  opacity: 0;
+}
+
+.rest__center {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.rest__label,
+.rest__sub {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.rest__label span,
+.rest__sub span {
+  display: inline-block;
+}
+
+.rest__label {
+  color: color-mix(in srgb, var(--acc) 85%, #fff);
+}
+
+.rest__big {
+  display: grid;
+  place-items: center;
+  margin: 4px 0 3px;
+  height: calc(var(--dial) * 0.27);
+}
+
+.rest__weight,
+.rest__time {
+  grid-area: 1 / 1;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font-size: calc(var(--dial) * 0.27);
+  line-height: 1;
+  font-weight: 620;
+  font-variation-settings: 'wdth' 92;
+  letter-spacing: -0.035em;
+}
+
+.rest__unit {
+  margin-left: 0.12em;
+  font-size: 0.34em;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.rest__time {
+  opacity: 0;
+  /* the reels fade at their top and bottom, like a wheel seen through a slot */
+  -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.reel {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  width: 0.6em;
+  text-align: center;
+}
+
+.reel__strip {
+  display: block;
+}
+
+.reel__strip span {
+  display: block;
+  height: 1em;
+}
+
+.rest__colon {
+  display: inline-block;
+  width: 0.3em;
+  text-align: center;
+  transform: translateY(-0.06em);
+}
+
+/* the meta row */
+.rest__meta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: clamp(6px, 1.8vh, 12px);
+  padding: clamp(7px, 1.6vh, 9px) 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+}
+
+.rest__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rest__num {
+  font-weight: 600;
+  font-variation-settings: 'wdth' 96;
+}
+
+.rest__small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.rest__heart {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: var(--rest);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+/* the buttons */
+.rest__actions {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: 8px;
+  margin-top: clamp(4px, 1vh, 6px);
+}
+
+.rest__side,
+.rest__main {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rest__side:disabled {
+  cursor: default;
+}
+
+.rest__side-face,
+.rest__main-face {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  border-radius: 23px;
+  overflow: hidden;
+}
+
+.rest__side-face {
+  gap: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: opacity 0.3s;
+}
+
+.rest__side:disabled .rest__side-face {
+  opacity: 0.35;
+}
+
+.rest__side svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.rest__main-face {
+  gap: 7px;
+  color: var(--button-ink);
+  font-size: 14px;
+  font-weight: 620;
+  font-variation-settings: 'wdth' 104;
+  background: linear-gradient(180deg, #ffffff, var(--button) 55%, #dcdcd6);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 20px -8px color-mix(in srgb, var(--acc) 55%, transparent);
+}
+
+.rest__main-words {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.rest__main-words span {
+  display: inline-block;
+}
+
+.rest__main-shine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rest__main-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  overflow: visible;
+}
+
+.rest__main-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rest__check {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.rest__skip {
+  opacity: 0;
+}
+
+.rest__side:focus-visible .rest__side-face,
+.rest__main:focus-visible .rest__main-face {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .rest__side:not(:disabled):hover .rest__side-face {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+  }
+}
