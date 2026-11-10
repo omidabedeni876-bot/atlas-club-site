@@ -20,6 +20,10 @@ Copyright (c) 2026 Lucide Icons and Contributors. ISC License; see `assets/icons
 
 The progressive center-open photo reveal adapts the interaction pattern from Animorio's “The images that open like an accordion.” Its bundled item notice at `D:\بیزی\گنجینه منابع وب\curated\animations\animorio\downloaded\images-that-open-like-an-accordion\images-that-open-like-an-accordion.zip` allows use in personal/client websites, including commercial projects, and prohibits resale or redistribution as-is/code collections. The site's own gym photos are used; the reference ZIP, code and demo media are not shipped. Source: https://animorio.com/en/.
 
+## Animorio page-turn technique
+
+The reversible four-leaf upward page riffle at the method, dashboard and membership section boundaries adapts the interaction pattern from Animorio's “The page transition with a deck of coloured sheets riffling up.” The item notice at `D:\بیزی\گنجینه منابع وب\curated\animations\animorio\downloaded\page-transition-with-a-deck-of-coloured-sheets-riffling-up\page-transition-with-a-deck-of-coloured-sheets-riffling-up.zip` permits use on personal/client websites, including commercial projects, and prohibits resale or redistribution as-is/code collections. This site uses a scoped implementation with its existing palette; it does not ship the original ZIP, source, media, or demo fonts. Source: https://animorio.com/en/animations/page-transition-with-a-deck-of-coloured-sheets-riffling-up/.
+
 ## GSAP
 
 GSAP 3.15.1 is bundled from the official 3.15.1 distribution. Preserve the upstream license header. License reference: `assets/vendor/GSAP-LICENSE-REFERENCE.txt`; official terms: https://gsap.com/standard-license.

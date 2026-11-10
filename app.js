@@ -128,11 +128,37 @@ let scrollFrame = 0;
 const motionGsap = window.gsap;
 const motionClamp = motionGsap?.utils?.clamp || ((min, max, value) => Math.max(min, Math.min(max, value)));
 const scrollPhotos = [...document.querySelectorAll("[data-scroll-photo]")];
+const pageTurnLeaves = [...document.querySelectorAll(".page-leaf")];
+const pageTurnShade = document.querySelector(".page-turn-shade");
+const pageTurnBoundaries = ["method", "dashboard", "join"].map((id) => byId(id)).filter(Boolean);
 const heroPhoto = document.querySelector(".hero-photo");
 if (!reducedMotion) scrollPhotos.forEach((photo) => motionGsap?.set(photo, { clipPath: "inset(0 42% 0 42%)", scale: 1.035, transformOrigin: "center" }));
 function updateScrollMotion() {
   if (reducedMotion || !motionGsap) return;
   const vh = Math.max(1, innerHeight);
+  const activeTurn = pageTurnBoundaries.map((section) => {
+    const rect = section.getBoundingClientRect();
+    return { rect, progress: (vh * .88 - rect.top) / (vh * .58) };
+  }).find(({ progress }) => progress >= 0 && progress <= 1);
+  if (activeTurn) {
+    const progress = activeTurn.progress;
+    pageTurnLeaves.forEach((leaf, index) => {
+      const local = motionClamp(0, 1, (progress - index * .17) / .46);
+      const edgeFade = local < .09 ? local / .09 : local > .9 ? (1 - local) / .1 : 1;
+      const tilt = (index % 2 ? -1 : 1) * (1 - local) * 1.8;
+      motionGsap.set(leaf, {
+        yPercent: 112 - local * 224,
+        rotation: tilt,
+        opacity: edgeFade,
+        force3D: true
+      });
+    });
+    const shadeProgress = motionClamp(0, 1, progress / .35) * (1 - motionClamp(0, 1, (progress - .7) / .3));
+    if (pageTurnShade) motionGsap.set(pageTurnShade, { opacity: shadeProgress * .22 });
+  } else {
+    pageTurnLeaves.forEach((leaf) => motionGsap.set(leaf, { yPercent: 112, rotation: 0, opacity: 0, force3D: true }));
+    if (pageTurnShade) motionGsap.set(pageTurnShade, { opacity: 0 });
+  }
   scrollPhotos.forEach((photo, index) => {
     const rect = photo.getBoundingClientRect();
     const progress = motionClamp(0, 1, (vh * .88 - rect.top) / (vh * .58) - index * .06);
