@@ -61,6 +61,16 @@ function setLanguage(lang) {
   renderDashboard();
   updateRoute(currentStep);
   updateModalHeading();
+  if (typeof chapterButtons !== "undefined") {
+    chapterNav.setAttribute("aria-label", activeLang === "fa" ? "پیمایش بخش‌های صفحه" : activeLang === "ar" ? "التنقل بين أقسام الصفحة" : "Page sections");
+    chapterButtons.forEach((button, index) => {
+      const title = chapterSections[index]?.querySelector("h1,h2")?.textContent.trim().replace(/\s+/g, " ") || `Section ${index + 1}`;
+      button.setAttribute("aria-label", title);
+      button.title = title;
+    });
+    const activeChapter = chapterButtons.findIndex((button) => button.hasAttribute("aria-current"));
+    if (activeChapter >= 0) chapterLabel.textContent = chapterButtons[activeChapter].title;
+  }
   if (typeof reminderSet !== "undefined" && byId("reminder-button")) {
     byId("reminder-button").innerHTML = `<span>${translate(reminderSet ? "remind_done" : "remind")}</span><span>${reminderSet ? "✓" : "＋"}</span>`;
   }
@@ -121,12 +131,60 @@ if ("IntersectionObserver" in window && !reducedMotion) {
 }
 
 let scrollFrame = 0;
+const chapterSections = [...document.querySelectorAll("main > section[id], main > section.hero")];
+const chapterNav = document.createElement("nav");
+chapterNav.className = "chapter-nav";
+chapterNav.setAttribute("aria-label", "Page sections");
+chapterNav.innerHTML = `<span class="chapter-nav-label" aria-hidden="true"></span><div class="chapter-nav-track"></div>`;
+const chapterTrack = chapterNav.querySelector(".chapter-nav-track");
+const chapterButtons = chapterSections.map((section, index) => {
+  if (!section.id) section.id = "hero";
+  section.classList.add("scroll-chapter");
+  const seam = document.createElement("span");
+  seam.className = "chapter-seam";
+  seam.setAttribute("aria-hidden", "true");
+  if (index) section.prepend(seam);
+  const button = document.createElement("a");
+  button.className = "chapter-nav-stop";
+  button.href = `#${section.id}`;
+  button.setAttribute("aria-label", section.querySelector("h1,h2")?.textContent.trim().replace(/\s+/g, " ") || `Section ${index + 1}`);
+  button.title = button.getAttribute("aria-label");
+  button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span>`;
+  chapterTrack.append(button);
+  return button;
+});
+document.body.append(chapterNav);
+const chapterLabel = chapterNav.querySelector(".chapter-nav-label");
+function setActiveChapter(index) {
+  chapterButtons.forEach((button, i) => {
+    if (i === index) button.setAttribute("aria-current", "location");
+    else button.removeAttribute("aria-current");
+  });
+  const active = chapterButtons[index];
+  if (active) chapterLabel.textContent = active.title;
+}
+if ("IntersectionObserver" in window) {
+  const chapterObserver = new IntersectionObserver((entries) => {
+    const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (active) setActiveChapter(chapterSections.indexOf(active.target));
+  }, { threshold: [.15, .3, .5, .7], rootMargin: "-16% 0px -38% 0px" });
+  chapterSections.forEach((section) => chapterObserver.observe(section));
+}
+chapterButtons.forEach((button, index) => button.addEventListener("click", () => setActiveChapter(index)));
+setActiveChapter(0);
 window.addEventListener("scroll", () => {
   if (scrollFrame) return;
   scrollFrame = requestAnimationFrame(() => {
     const max = document.documentElement.scrollHeight - innerHeight;
     const progress = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
     byId("read-progress").style.transform = `scaleX(${progress})`;
+    chapterSections.forEach((section) => {
+      const seam = section.querySelector(":scope > .chapter-seam");
+      if (!seam || reducedMotion) return;
+      const rect = section.getBoundingClientRect();
+      const phase = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight + rect.height * .32)));
+      seam.style.setProperty("--seam-progress", phase.toFixed(3));
+    });
     scrollFrame = 0;
   });
 }, { passive: true });
