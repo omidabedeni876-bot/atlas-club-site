@@ -16,6 +16,10 @@ Copyright (c) 2026 Lucide Icons and Contributors. ISC License; see `assets/icons
 
 “The gym rest timer with the set that logs itself” is from Animorio and is included in a website implementation under the item's license. Use on personal and client sites, including commercial work, is allowed. Resale, redistribution as-is, templates and code collections are prohibited. Item license: `assets/animorio/gym-rest-timer/LICENZA.txt`; source page: https://animorio.com/en/animations/gym-rest-timer-with-the-set-that-logs-itself/.
 
+## Animorio scroll techniques
+
+The scroll-driven photo-card assembly, chapter swap and nested crosshair rings adapt these user-downloaded Animorio examples: “The bento grid that assembles on scroll,” “Chapters that swap askew on scroll,” and “The section index with crosshair circles that regroup on scroll.” Their bundled item notices in `D:\بیزی\گنجینه منابع وب\curated\animations\animorio\downloaded\` permit use in personal/client websites, including commercial projects, and prohibit resale or redistribution as-is/code collections. This implementation uses the motion patterns in the user's site; it does not include those ZIPs or their demo media. Source directory: https://animorio.com/en/.
+
 ## GSAP
 
 GSAP 3.15.1 is bundled from the official 3.15.1 distribution. Preserve the upstream license header. License reference: `assets/vendor/GSAP-LICENSE-REFERENCE.txt`; official terms: https://gsap.com/standard-license.

@@ -110,6 +110,7 @@ if ("IntersectionObserver" in window && !reducedMotion) {
 
 let currentStep = 0;
 function updateRoute(index) {
+  const previousStep = currentStep;
   currentStep = Math.max(0, Math.min(2, index));
   const card = byId("journey-card");
   if (!card) return;
@@ -121,6 +122,13 @@ function updateRoute(index) {
   byId("route-fill").style.width = `${currentStep * 50}%`;
   document.querySelectorAll("[data-route-node]").forEach((node) => node.classList.toggle("is-active", Number(node.dataset.routeNode) <= currentStep));
   document.querySelectorAll("[data-step]").forEach((step) => step.classList.toggle("is-active", Number(step.dataset.step) === currentStep));
+  if (previousStep !== currentStep && !reducedMotion && window.gsap) {
+    const direction = currentStep > previousStep ? 1 : -1;
+    const copy = card.querySelector(".route-copy");
+    window.gsap.killTweensOf([card, copy]);
+    window.gsap.fromTo(card, { rotationX: 4, rotationY: direction * 11, z: -54, autoAlpha: .78 }, { rotationX: 0, rotationY: 0, z: 0, autoAlpha: 1, duration: .72, ease: "power3.out", clearProps: "transform,opacity,visibility" });
+    window.gsap.fromTo(copy, { y: 20, rotationX: -10, opacity: .42 }, { y: 0, rotationX: 0, opacity: 1, duration: .56, ease: "power3.out" });
+  }
 }
 if ("IntersectionObserver" in window && !reducedMotion) {
   const stepsObserver = new IntersectionObserver((entries) => {
@@ -172,6 +180,34 @@ if ("IntersectionObserver" in window) {
 }
 chapterButtons.forEach((button, index) => button.addEventListener("click", () => setActiveChapter(index)));
 setActiveChapter(0);
+const motionGsap = window.gsap;
+const motionClamp = motionGsap?.utils?.clamp || ((min, max, value) => Math.max(min, Math.min(max, value)));
+const programCards = [...document.querySelectorAll(".program-card")];
+const heroPhoto = document.querySelector(".hero-photo");
+const heroOrbit = document.querySelector(".hero-orbit");
+function updateScrollMotion() {
+  if (reducedMotion || !motionGsap) return;
+  const vh = Math.max(1, innerHeight);
+  programCards.forEach((card, index) => {
+    let documentTop = 0;
+    for (let node = card; node; node = node.offsetParent) documentTop += node.offsetTop;
+    const progress = motionClamp(0, 1, (scrollY + vh - documentTop) / (vh * .72));
+    const side = index - (programCards.length - 1) / 2;
+    motionGsap.set(card, {
+      x: side * 76 * (1 - progress), y: 74 * (1 - progress), z: -100 * (1 - progress),
+      rotationX: 17 * (1 - progress), rotationY: -side * 13 * (1 - progress),
+      scale: .88 + .12 * progress, force3D: true
+    });
+    const photo = card.querySelector(".program-photo");
+    if (photo) motionGsap.set(photo, { z: 22, x: side * 5 * (1 - progress), y: 12 * (1 - progress), scale: 1.1 - .1 * progress, force3D: true });
+  });
+  if (heroPhoto && heroOrbit) {
+    const heroRect = document.querySelector(".hero")?.getBoundingClientRect();
+    const progress = heroRect ? motionClamp(0, 1, -heroRect.top / Math.max(1, heroRect.height * .72)) : 0;
+    motionGsap.set(heroPhoto, { y: -42 * progress, scale: 1.04 + .045 * progress, force3D: true });
+    motionGsap.set(heroOrbit, { rotationX: 62, rotationY: -8 + progress * 28, rotationZ: -24 + progress * 76, y: -36 * progress, scale: 1 + progress * .2, autoAlpha: 1 - progress * .48, force3D: true });
+  }
+}
 window.addEventListener("scroll", () => {
   if (scrollFrame) return;
   scrollFrame = requestAnimationFrame(() => {
@@ -185,9 +221,11 @@ window.addEventListener("scroll", () => {
       const phase = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight + rect.height * .32)));
       seam.style.setProperty("--seam-progress", phase.toFixed(3));
     });
+    updateScrollMotion();
     scrollFrame = 0;
   });
 }, { passive: true });
+updateScrollMotion();
 
 const weekTemplate = [
   { key:"class_strength", type:"class_type_1", time:"07:30" },
