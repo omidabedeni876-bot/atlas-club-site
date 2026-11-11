@@ -119,7 +119,8 @@ html[dir="ltr"] .hero-actions .button::after{transform-origin:left}
 @media(max-width:760px){.hero-actions{gap:22px}.hero-actions .button{font-size:11px}.principle{padding:19px 12px 22px}.program-grid{gap:15px}.program-card,.program-card:nth-child(2),.program-card:nth-child(3){margin:0}.program-photo{height:250px}.program-detail{padding:12px 0}.program-detail h3{font-size:16px}.program-detail p{font-size:10px}.circle-link{font-size:9px}}
 @media(max-width:540px){.program-grid{grid-template-columns:1fr;gap:28px}.program-photo{height:clamp(280px,82vw,430px)}.program-detail{min-height:auto;padding-top:14px}.ticker-track{gap:18px}.ticker-track span+span::before{margin-inline-end:18px}}
 @media(prefers-reduced-motion:reduce){.program-photo{clip-path:none!important;transform:none!important;will-change:auto}.hero-photo{transform:none!important}}
-.maker-mark{order:4;flex-basis:100%;display:flex;flex-direction:column;align-items:center;gap:3px;margin:2px auto 0;color:#fff;text-align:center}
-.maker-mark-fa{font-family:Vazirmatn,sans-serif;font-size:11px;line-height:1.6;letter-spacing:0;font-weight:500}
-.maker-mark-en{font:600 8px/1.4 Manrope,sans-serif;letter-spacing:.19em;opacity:.88}
-@media(max-width:760px){.maker-mark{margin-top:4px}.maker-mark-fa{font-size:10px}.maker-mark-en{font-size:7px}}
+.maker-mark{order:4;flex-basis:100%;display:block;width:clamp(220px,25vw,300px);height:auto;margin:0 auto 2px;line-height:0;mix-blend-mode:screen;transition:opacity .25s ease,transform .25s ease}
+.maker-mark svg{display:block;width:100%;height:auto;filter:invert(1)}
+.maker-mark:hover{opacity:.82;transform:translateY(-2px)}
+.maker-mark:focus-visible{outline:1px solid rgba(255,255,255,.7);outline-offset:6px}
+@media(max-width:760px){.maker-mark{width:clamp(205px,66vw,270px);margin-top:4px}}
