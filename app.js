@@ -1,5 +1,7 @@
 const i18n = {
   fa: {
+    nav_menu:"بخش‌ها",nav_home:"صفحهٔ اصلی",nav_journey:"مسیر تمرین",nav_schedule:"برنامهٔ هفتگی",nav_timer:"تایمر تمرین",nav_coaches:"مربیان",nav_join:"عضویت",
+    access_title:"بخش موردنیازت را مستقیم باز کن.",access_training:"شیوه‌های تمرین",access_training_copy:"تمرین مناسب خودت را پیدا کن.",access_schedule:"برنامهٔ هفتگی",access_schedule_copy:"روز و ساعت دلخواهت را ببین.",access_progress:"پیشرفت تمرین",access_progress_copy:"نمای ورزشکار و مربی.",access_fuel:"خوراک و بازیابی",access_fuel_copy:"منو و فروشگاه باشگاه.",
     title:"ATLAS CLUB — باشگاه تمرین و تندرستی",nav_method:"باشگاه",nav_programs:"برنامه‌ها",nav_progress:"پیشرفت",nav_fuel:"خوراک و بازیابی",nav_cta:"جلسهٔ آشنایی",
     hero_status:"فضا برای حرکت",hero_kicker:"تمرین، همراهی، تداوم",hero_title:"قدرتی که<br><em>از تو شروع می‌شود.</em>",hero_copy:"تمرین هدفمند، برنامهٔ شخصی و همراهی مربی؛ در فضایی که برای زندگی واقعی طراحی شده.",hero_cta:"مسیرم را شروع کنم",hero_link:"با اطلس آشنا شو",hero_side:"یک قدم، بعد قدم بعدی.",scroll_discover:"برای کشف اسکرول کن",ticker_a:"تمرین با هدف",ticker_b:"پیشرفت در ریتم تو",program_link:"دیدن برنامهٔ کلاس‌ها",
     method_kicker:"روش اطلس",method_title:"بدنِ قوی‌تر،<br><em>با مسیر خودت.</em>",method_copy:"قرار نیست زندگی‌ات دور تمرین بچرخد. ما برنامه و همراهی را طوری کنار هم می‌گذاریم که حرکت‌کردن به بخشی از زندگی‌ات تبدیل شود؛ آرام، پیوسته و قابل‌اندازه‌گیری.",method_link:"مسیر تمرین را ببین",p1_title:"هدف روشن",p1_copy:"برنامه‌ای متناسب با زمان، سطح و هدف تو.",p2_title:"مربی همراه",p2_copy:"بازخورد انسانی؛ با احترام به ریتم پیشرفتت.",p3_title:"پیشرفت قابل‌دیدن",p3_copy:"عادت و تلاش را دنبال کن؛ بدون مسابقه با دیگران.",
@@ -13,6 +15,8 @@ const i18n = {
     modal_title:"از کجا شروع کنیم؟",modal_title_basic:"جزئیات عضویت پایه",modal_title_coach:"جزئیات همراهی مربی",modal_title_complete:"جزئیات بستهٔ ترکیبی",modal_copy:"این فرم فقط برای نمایش جریان عضویت است و اطلاعات ارسال یا ذخیره نمی‌شوند.",field_name:"نام",field_goal:"تمرکز تمرین",placeholder_name:"نامت را بنویس",goal_strength:"قدرت و آمادگی",goal_mobility:"حرکت و تعادل",goal_group:"تمرین گروهی",form_submit:"ادامه در نسخهٔ نمایشی",form_result:"در نسخهٔ نمایشی ثبت نشد؛ هیچ اطلاعاتی ارسال یا ذخیره نشده است.",cart_toast:"به سبد نمونه اضافه شد"
   },
   en: {
+    nav_menu:"Sections",nav_home:"Home",nav_journey:"Training path",nav_schedule:"Weekly schedule",nav_timer:"Workout timer",nav_coaches:"Coaching",nav_join:"Membership",
+    access_title:"Go straight to what you need.",access_training:"Training styles",access_training_copy:"Find a session that fits you.",access_schedule:"Weekly schedule",access_schedule_copy:"Choose a day and time.",access_progress:"Training progress",access_progress_copy:"Athlete and coach views.",access_fuel:"Fuel and recovery",access_fuel_copy:"Club menu and shop.",
     title:"ATLAS CLUB — Training & Wellbeing",nav_method:"The club",nav_programs:"Programs",nav_progress:"Progress",nav_fuel:"Fuel & recovery",nav_cta:"Meet the club",
     hero_status:"Room to move",hero_kicker:"TRAIN · SUPPORT · REPEAT",hero_title:"Strength that<br><em>starts with you.</em>",hero_copy:"Intentional training, a personal plan and a coach beside you—in a space made for real life.",hero_cta:"Start my path",hero_link:"Discover ATLAS",hero_side:"One step, then the next.",scroll_discover:"Scroll to explore",ticker_a:"TRAIN WITH PURPOSE",ticker_b:"PROGRESS AT YOUR PACE",program_link:"View class schedule",
     method_kicker:"THE ATLAS METHOD",method_title:"A stronger body,<br><em>on your own path.</em>",method_copy:"Life does not have to revolve around training. We bring the plan and the support together so movement can become part of your everyday: steady, sustainable and visible.",method_link:"See the training path",p1_title:"A clear goal",p1_copy:"A plan shaped around your time, level and goals.",p2_title:"A coach beside you",p2_copy:"Human feedback that respects your pace.",p3_title:"Visible progress",p3_copy:"Follow your effort and habits, without comparing yourself to others.",
@@ -26,6 +30,8 @@ const i18n = {
     modal_title:"Where should we start?",modal_title_basic:"Foundation membership details",modal_title_coach:"Coach support details",modal_title_complete:"Complete membership details",modal_copy:"This form previews the membership flow. Nothing is sent or stored.",field_name:"Name",field_goal:"Training focus",placeholder_name:"Your name",goal_strength:"Strength & conditioning",goal_mobility:"Mobility & balance",goal_group:"Group training",form_submit:"Continue in demo",form_result:"Demo only: nothing was submitted, sent or stored.",cart_toast:"Added to sample basket"
   },
   ar: {
+    nav_menu:"الأقسام",nav_home:"الرئيسية",nav_journey:"مسار التدريب",nav_schedule:"الجدول الأسبوعي",nav_timer:"مؤقت التمرين",nav_coaches:"المدربون",nav_join:"العضوية",
+    access_title:"انتقل مباشرةً إلى ما تحتاجه.",access_training:"أنواع التدريب",access_training_copy:"اختر تمريناً يناسبك.",access_schedule:"الجدول الأسبوعي",access_schedule_copy:"اختر اليوم والوقت.",access_progress:"تقدم التدريب",access_progress_copy:"عرض الرياضي والمدرب.",access_fuel:"التغذية والتعافي",access_fuel_copy:"قائمة النادي ومتجره.",
     title:"نادي أطلس — التدريب والعافية",nav_method:"النادي",nav_programs:"البرامج",nav_progress:"التقدم",nav_fuel:"التغذية والتعافي",nav_cta:"تعرّف على النادي",
     hero_status:"مساحة للحركة",hero_kicker:"تدريب · دعم · استمرارية",hero_title:"قوةٌ<br><em>تبدأ منك.</em>",hero_copy:"تدريب هادف وخطة شخصية ومدرب إلى جانبك، في مساحة صُممت للحياة اليومية.",hero_cta:"ابدأ مساري",hero_link:"اكتشف أطلس",hero_side:"خطوة ثم التي تليها.",scroll_discover:"مرّر للاستكشاف",ticker_a:"تدريب بهدف",ticker_b:"تقدم على إيقاعك",program_link:"عرض جدول الحصص",
     method_kicker:"منهج أطلس",method_title:"جسد أقوى،<br><em>ومسارك الخاص.</em>",method_copy:"لا ينبغي أن تدور حياتك حول التدريب. نجمع الخطة والدعم لتصبح الحركة جزءاً من يومك؛ بهدوء واستمرارية وتقدم تراه.",method_link:"شاهد مسار التدريب",p1_title:"هدف واضح",p1_copy:"خطة تناسب وقتك ومستواك وأهدافك.",p2_title:"مدرب إلى جانبك",p2_copy:"توجيه إنساني يحترم إيقاع تقدمك.",p3_title:"تقدم تراه",p3_copy:"تابع جهدك وعاداتك دون مقارنة نفسك بالآخرين.",
@@ -75,14 +81,23 @@ document.querySelectorAll("iframe[data-atlas-timer]").forEach((frame) => {
 
 const nav = byId("main-nav");
 const navToggle = byId("nav-toggle");
+const sectionMenu = byId("section-menu");
+function closeSectionMenu() {
+  sectionMenu.hidden = true;
+  navToggle.classList.remove("is-open");
+  navToggle.setAttribute("aria-expanded", "false");
+}
 navToggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("is-open");
+  const open = sectionMenu.hidden;
+  sectionMenu.hidden = !open;
+  navToggle.classList.toggle("is-open", open);
   navToggle.setAttribute("aria-expanded", String(open));
 });
-nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
-  nav.classList.remove("is-open");
-  navToggle.setAttribute("aria-expanded", "false");
-}));
+sectionMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeSectionMenu));
+document.addEventListener("click", (event) => {
+  if (!sectionMenu.hidden && !sectionMenu.contains(event.target) && !navToggle.contains(event.target)) closeSectionMenu();
+});
+document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeSectionMenu(); });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealNodes = document.querySelectorAll(".reveal");
@@ -133,16 +148,11 @@ if (!reducedMotion) scrollPhotos.forEach((photo) => motionGsap?.set(photo, { cli
 function updateScrollMotion() {
   if (reducedMotion || !motionGsap) return;
   const vh = Math.max(1, innerHeight);
-  scrollPhotos.forEach((photo, index) => {
-    const rect = photo.getBoundingClientRect();
-    const progress = motionClamp(0, 1, (vh * .88 - rect.top) / (vh * .58) - index * .06);
-    const inset = (1 - progress) * 42;
-    motionGsap.set(photo, {
-      clipPath: `inset(0 ${inset.toFixed(1)}% 0 ${inset.toFixed(1)}%)`,
-      scale: 1.035 - progress * .035,
-      force3D: true
-    });
-  });
+  scrollPhotos.forEach((photo) => motionGsap.set(photo, {
+    clipPath: "inset(0)",
+    scale: 1,
+    force3D: true
+  }));
   const heroRect = document.querySelector(".hero")?.getBoundingClientRect();
   const heroProgress = heroRect ? motionClamp(0, 1, -heroRect.top / Math.max(1, heroRect.height)) : 0;
   if (heroPhoto) motionGsap.set(heroPhoto, { y: -24 * heroProgress, scale: 1.035 + .025 * heroProgress, force3D: true });
@@ -158,6 +168,45 @@ window.addEventListener("scroll", () => {
   });
 }, { passive: true });
 updateScrollMotion();
+
+const viewByDestination = {
+  home:"home", method:"method", journey:"journey", programs:"programs", schedule:"schedule",
+  dashboard:"progress", timer:"timer", coaches:"coaches", fuel:"fuel", join:"join", closing:"closing"
+};
+function applyCurrentView() {
+  const destination = decodeURIComponent(location.hash.slice(1)) || "home";
+  const view = viewByDestination[destination] || "home";
+  document.body.dataset.view = view;
+  sectionMenu.querySelectorAll("a").forEach((link) => {
+    if (link.hash === `#${destination}`) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+  nav.querySelectorAll("a").forEach((link) => {
+    if (link.hash === `#${destination}`) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+  closeSectionMenu();
+  window.scrollTo({ top: 0, behavior: "auto" });
+  const target = destination === "home" ? byId("home-access") : byId(destination);
+  if (target) {
+    target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+  }
+  requestAnimationFrame(updateScrollMotion);
+}
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[href^='#']");
+  if (!link) return;
+  const destination = link.getAttribute("href").slice(1);
+  if (!(destination in viewByDestination)) return;
+  event.preventDefault();
+  const nextHash = `#${destination}`;
+  if (location.hash !== nextHash) history.pushState(null, "", nextHash);
+  applyCurrentView();
+});
+window.addEventListener("popstate", applyCurrentView);
+window.addEventListener("hashchange", applyCurrentView);
+applyCurrentView();
 
 const weekTemplate = [
   { key:"class_strength", type:"class_type_1", time:"07:30" },
