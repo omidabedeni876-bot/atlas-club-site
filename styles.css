@@ -209,6 +209,7 @@ body[data-view="home"] .main-nav a[aria-current="page"]::after{transform:scaleX(
 .icon-menu{mask-image:url('assets/icons/menu.svg')}
 .nav-toggle .icon-menu{width:15px;height:15px;margin:0;background:currentColor;transition:transform .2s ease}
 .nav-toggle.is-open .icon-menu{mask-image:url('assets/icons/x.svg');transform:rotate(90deg)}
+.nav-toggle.is-open .nav-toggle-icon .icon-menu{transform:none}
 .access-arrow{width:18px;height:18px;flex:none;font-size:0;transition:transform .2s ease}
 .home-access-card:hover .access-arrow{transform:translate(2px,-2px)}
 .button-arrow,.fuel-arrow{display:inline-block!important;width:15px;height:15px;font-size:0}
