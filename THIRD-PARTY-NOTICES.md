@@ -1,16 +1,19 @@
 # Third-party notices
 
-## Estedad
+## Fonts from the Bizi library
 
-Font files from the Bizi local collection. Licensed under SIL Open Font License 1.1; see `assets/fonts/Estedad-OFL.txt`.
+The bundled font binaries were checked against Bizi originals and match byte-for-byte:
 
-## Vazirmatn, Manrope and Noto Sans Arabic
+- Estedad: `D:\بیزی\منابع بیوتی‌لند\fonts\estedad.woff2`
+- Vazirmatn: `D:\بیزی\گنجینه منابع وب\fonts\google-fonts\Vazirmatn\Vazirmatn[wght].ttf`
+- Manrope: `D:\بیزی\گنجینه منابع وب\fonts\google-fonts\manrope\Manrope[wght].ttf`
+- Noto Sans Arabic: `D:\بیزی\گنجینه منابع وب\fonts\google-fonts\noto-sans-arabic\NotoSansArabic[wdth,wght].ttf`
 
-Font families are bundled locally under SIL Open Font License 1.1. Their original notices are in `assets/fonts/`.
+All four are under SIL Open Font License 1.1. Their original notices are in `assets/fonts/`. No remote font service is used.
 
-## Lucide icons
+## Lucide icons from the Bizi library
 
-Copyright (c) 2026 Lucide Icons and Contributors. ISC License; see `assets/icons/LICENSE.txt`.
+The selected SVG assets in `assets/icons/` match the originals in `D:\بیزی\گنجینه منابع وب\curated\icons\lucide\` byte-for-byte. The curated registry records Lucide 1.70.0 and the individual upstream source URLs. Copyright (c) 2026 Lucide Icons and Contributors. ISC License; see `assets/icons/LICENSE.txt`.
 
 ## Animorio gym rest timer
 
