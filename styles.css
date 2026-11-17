@@ -207,9 +207,16 @@ body[data-view="home"] .main-nav a[aria-current="page"]::after{transform:scaleX(
 .icon-external-link{mask-image:url('assets/icons/external-link.svg')}
 .icon-x{mask-image:url('assets/icons/x.svg')}
 .icon-menu{mask-image:url('assets/icons/menu.svg')}
+.icon{mask-mode:alpha}
 .nav-toggle .icon-menu{width:15px;height:15px;margin:0;background:currentColor;transition:transform .2s ease}
 .nav-toggle.is-open .icon-menu{mask-image:url('assets/icons/x.svg');transform:rotate(90deg)}
 .nav-toggle.is-open .nav-toggle-icon .icon-menu{transform:none}
+.nav-toggle-icon{width:15px;height:15px;display:grid;place-items:center}
+.nav-toggle-icon img{grid-area:1/1;width:15px;height:15px;filter:brightness(0) invert(1);transition:opacity .18s,transform .18s}
+.nav-toggle-icon .menu-art{opacity:1}
+.nav-toggle-icon .close-art{opacity:0;transform:rotate(-45deg)}
+.nav-toggle.is-open .nav-toggle-icon .menu-art{opacity:0;transform:rotate(45deg)}
+.nav-toggle.is-open .nav-toggle-icon .close-art{opacity:1;transform:none}
 .access-arrow{width:18px;height:18px;flex:none;font-size:0;transition:transform .2s ease}
 .home-access-card:hover .access-arrow{transform:translate(2px,-2px)}
 .button-arrow,.fuel-arrow{display:inline-block!important;width:15px;height:15px;font-size:0}
