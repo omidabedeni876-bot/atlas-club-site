@@ -236,3 +236,8 @@ body[data-view="home"] .main-nav a[aria-current="page"]::after{transform:scaleX(
 .membership-card>button:hover .icon-external-link{transform:translate(2px,-2px)}
 .modal-close{width:34px;height:34px;padding:0;display:grid;place-items:center}
 .modal-close .icon-x{width:17px;height:17px}
+
+@font-face{font-family:Nimkat;src:url('assets/fonts/Nimkat-Medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+html[lang=fa] .hero h1{font-family:Nimkat,Estedad,Vazirmatn,sans-serif;font-weight:500;letter-spacing:0;line-height:1.35}
+html[lang=fa] .hero h1 em{font-family:Nimkat,Estedad,Vazirmatn,sans-serif;font-weight:500}
+

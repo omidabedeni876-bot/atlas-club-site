@@ -34,3 +34,11 @@ GSAP 3.15.1 is bundled from the official 3.15.1 distribution. Preserve the upstr
 ## Pexels photography
 
 Individual photos are bundled locally in `assets/pexels/` for reliable display. Pexels permits free use and modification, with attribution not required; photographer credits and source pages are recorded in `DESIGN-NOTES.md`. License: https://www.pexels.com/license/.
+
+## Nimkat font supplied by the user
+
+- Original font: ssets/fonts/Nimkat-Medium.ttf (Nimkat Medium, v1.00, copyright 2021 Seyed Reza Amirabadizadeh).
+- Internal font metadata directs users to obtain a license from FontIran and lists https://irfont.ir/licenses/.
+- The user reports verbal permission for web use; no written license file was provided.
+- Source archive: Nimkat [@fontbazi].zip, supplied by the user. The original archive is preserved in the user's Downloads folder.
+
