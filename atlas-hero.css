@@ -12,11 +12,9 @@
   background-size: cover;
   background-position: center 48%;
   filter: saturate(.91) contrast(1.04);
-  transform: scale(1.04);
-  will-change: transform, clip-path;
-  animation:
-    atlas-hero-reveal 1.15s cubic-bezier(.2,.72,.24,1) both,
-    atlas-hero-camera 26s 1.15s cubic-bezier(.45,0,.55,1) infinite alternate;
+  transform: scale(1.05);
+  will-change: transform;
+  animation: atlas-hero-camera 18s cubic-bezier(.45,0,.55,1) infinite alternate;
 }
 
 .hero-shade {
@@ -63,14 +61,9 @@ html[lang="fa"] .hero h1 em {
   backdrop-filter: blur(8px);
 }
 
-@keyframes atlas-hero-reveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to { clip-path: inset(0 0 0 0); }
-}
-
 @keyframes atlas-hero-camera {
-  from { transform: scale(1.04) translate3d(.4%, 0, 0); }
-  to { transform: scale(1.13) translate3d(-.8%, -.5%, 0); }
+  from { transform: scale(1.05) translate3d(.5%, 0, 0); }
+  to { transform: scale(1.16) translate3d(-1.2%, -.5%, 0); }
 }
 
 @media (max-width: 760px) {
@@ -78,6 +71,14 @@ html[lang="fa"] .hero h1 em {
   .hero-topline { justify-content: flex-start; }
   .hero-topline > span:first-child { display: none; }
   .hero-photo { background-position: 29% center; }
+  .home-access-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  .home-access-card { min-height: 112px; scroll-snap-align: none; }
   .hero-shade {
     background:
       linear-gradient(0deg, rgba(10,8,12,.96) 0%, rgba(10,8,12,.78) 38%, rgba(10,8,12,.16) 78%, rgba(10,8,12,.22) 100%),
@@ -94,5 +95,5 @@ html[lang="fa"] .hero h1 em {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-photo { animation: none !important; transform: none !important; clip-path: none !important; }
+  .hero-photo { animation: none !important; transform: none !important; }
 }
