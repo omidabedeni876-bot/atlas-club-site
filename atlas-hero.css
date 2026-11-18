@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Nimkat";
+  src: url("assets/fonts/Nimkat-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* One predictable hero layer, loaded after the shared stylesheet. */
+.hero-photo {
+  background-image: url("assets/hero/atlas-club-hero.jpg") !important;
+  background-size: cover;
+  background-position: center 48%;
+  filter: saturate(.91) contrast(1.04);
+  transform: scale(1.04);
+  will-change: transform, clip-path;
+  animation:
+    atlas-hero-reveal 1.15s cubic-bezier(.2,.72,.24,1) both,
+    atlas-hero-camera 26s 1.15s cubic-bezier(.45,0,.55,1) infinite alternate;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(270deg, rgba(10,8,12,.76) 0%, rgba(10,8,12,.46) 33%, rgba(10,8,12,.07) 72%),
+    linear-gradient(0deg, rgba(10,8,12,.66) 0%, transparent 29%, transparent 76%, rgba(10,8,12,.4) 100%);
+}
+
+html[lang="fa"] .hero h1 {
+  max-width: 9.5em;
+  margin-block: 24px 18px;
+  font-family: "Nimkat", Estedad, Vazirmatn, sans-serif;
+  font-size: clamp(60px, 7.4vw, 104px);
+  font-weight: 500;
+  line-height: 1.48;
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 3px 28px rgba(0,0,0,.43);
+}
+
+html[lang="fa"] .hero h1 em {
+  display: inline-block;
+  color: #ead29b;
+  font-family: "Nimkat", Estedad, Vazirmatn, sans-serif;
+  font-weight: 500;
+  text-shadow: 0 5px 32px rgba(207,173,102,.2);
+}
+
+.hero-actions .button {
+  min-height: 52px;
+  padding-inline: 21px;
+  border: 1px solid rgba(238,222,193,.38);
+  box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+
+.hero-actions .button-gold {
+  border-color: transparent;
+  background: linear-gradient(115deg, #ead39f, #c6a15c);
+  color: #19140e;
+}
+
+.hero-actions .button-quiet {
+  background: rgba(17,14,19,.46);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes atlas-hero-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes atlas-hero-camera {
+  from { transform: scale(1.04) translate3d(.4%, 0, 0); }
+  to { transform: scale(1.13) translate3d(-.8%, -.5%, 0); }
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: 600px; }
+  .hero-photo { background-position: 29% center; }
+  .hero-shade {
+    background:
+      linear-gradient(0deg, rgba(10,8,12,.96) 0%, rgba(10,8,12,.78) 38%, rgba(10,8,12,.16) 78%, rgba(10,8,12,.22) 100%),
+      linear-gradient(90deg, rgba(10,8,12,.21), transparent 75%);
+  }
+  html[lang="fa"] .hero h1 {
+    max-width: 100%;
+    margin-block: 17px 12px;
+    font-size: clamp(46px, 12.7vw, 60px);
+    line-height: 1.58;
+  }
+  .hero-actions .button { min-height: 47px; padding-inline: 14px; }
+  .hero-actions { gap: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo { animation: none !important; transform: none !important; clip-path: none !important; }
+}
