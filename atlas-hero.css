@@ -75,6 +75,8 @@ html[lang="fa"] .hero h1 em {
 
 @media (max-width: 760px) {
   .hero { min-height: 600px; }
+  .hero-topline { justify-content: flex-start; }
+  .hero-topline > span:first-child { display: none; }
   .hero-photo { background-position: 29% center; }
   .hero-shade {
     background:
