@@ -51,6 +51,30 @@ html[lang="fa"] .hero h1 em {
   text-shadow: 0 5px 32px rgba(207,173,102,.2);
 }
 
+html[lang="fa"] .editorial-title,
+html[lang="fa"] .closing h2 {
+  font-family: "Nimkat", Estedad, Vazirmatn, sans-serif;
+  font-weight: 500;
+  line-height: 1.48;
+  letter-spacing: 0;
+}
+
+html[lang="fa"] .editorial-title em,
+html[lang="fa"] .closing h2 em {
+  font-family: "Nimkat", Estedad, Vazirmatn, sans-serif;
+  font-weight: 500;
+}
+
+.schedule-section .editorial-title em,
+.fuel-section .editorial-title em {
+  color: #76571f;
+  text-shadow: none;
+}
+
+/* Preserve scroll reveal movement without hiding copy while a route loads. */
+main .reveal { opacity: 1; transform: translateY(8px); }
+main .reveal.is-visible { opacity: 1; transform: none; }
+
 .hero-actions .button {
   min-height: 52px;
   padding-inline: 21px;
@@ -105,4 +129,5 @@ html[lang="fa"] .hero h1 em {
 @media (prefers-reduced-motion: reduce) {
   .hero-photo { animation: none !important; transform: none !important; }
   .hero-content { animation: none !important; }
+  main .reveal { transform: none !important; }
 }
