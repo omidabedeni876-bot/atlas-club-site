@@ -23,6 +23,14 @@
     linear-gradient(0deg, rgba(10,8,12,.66) 0%, transparent 29%, transparent 76%, rgba(10,8,12,.4) 100%);
 }
 
+/* Keep the headline readable from the first frame; only its position settles. */
+.hero-content { animation: atlas-hero-copy .55s cubic-bezier(.22,.72,.24,1) both; }
+
+@keyframes atlas-hero-copy {
+  from { opacity: 1; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 html[lang="fa"] .hero h1 {
   max-width: 9.5em;
   margin-block: 24px 18px;
@@ -96,4 +104,5 @@ html[lang="fa"] .hero h1 em {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-photo { animation: none !important; transform: none !important; }
+  .hero-content { animation: none !important; }
 }
