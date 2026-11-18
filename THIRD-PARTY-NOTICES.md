@@ -37,8 +37,7 @@ Individual photos are bundled locally in `assets/pexels/` for reliable display. 
 
 ## Nimkat font supplied by the user
 
-- Original font: ssets/fonts/Nimkat-Medium.ttf (Nimkat Medium, v1.00, copyright 2021 Seyed Reza Amirabadizadeh).
+- Original font: `assets/fonts/Nimkat-Medium.ttf` (Nimkat Medium, v1.00, copyright 2021 Seyed Reza Amirabadizadeh).
 - Internal font metadata directs users to obtain a license from FontIran and lists https://irfont.ir/licenses/.
 - The user reports verbal permission for web use; no written license file was provided.
-- Source archive: Nimkat [@fontbazi].zip, supplied by the user. The original archive is preserved in the user's Downloads folder.
-
+- Source archive: `Nimkat [@fontbazi].zip`, supplied by the user. The original archive remains in the user's Downloads folder.
