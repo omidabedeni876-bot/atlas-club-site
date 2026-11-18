@@ -60,10 +60,10 @@ html::-webkit-scrollbar{width:10px}html::-webkit-scrollbar-track{background:var(
 .reveal{transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease);filter:blur(3px)}.reveal.is-visible{filter:none}.program-photo,.coach-photo,.fuel-image{transition:filter .8s var(--ease),background-position 1s var(--ease)}.program-card:hover .program-photo{filter:saturate(1.18) contrast(1.03)}.program-card:nth-child(2) .program-mark{color:var(--blue)}.program-card:nth-child(3) .program-mark{color:var(--red)}
 @media(max-width:760px){.chapter-nav{inset-inline-end:8px;top:50%;gap:0}.chapter-nav-label{display:none}.chapter-nav-track{gap:5px;padding:7px 5px}.chapter-nav-stop{width:15px;height:10px}.chapter-nav-stop[aria-current="location"]{width:23px}.chapter-seam{inset-block-start:-52px;height:115px}}
 @media(prefers-reduced-motion:reduce){.chapter-seam{display:none!important}.reveal{filter:none!important}}
-/* Keep the program photography focused on spaces and equipment, not exposed bodies. */
-.mobility-photo{background-image:linear-gradient(0deg,rgba(12,11,10,.62),transparent 55%),url('assets/pexels/hero.jpeg');background-size:100% 100%,cover;background-position:center,62% center}
+/* Keep the program photography focused on the class and equipment. */
+.mobility-photo{background-image:linear-gradient(0deg,rgba(12,11,10,.62),transparent 55%),url('assets/pexels/mobility.jpeg');background-size:100% 100%,cover;background-position:center,center}
 .group-photo{background-image:linear-gradient(0deg,rgba(12,11,10,.62),transparent 55%),url('assets/pexels/strength.jpeg');background-size:100% 100%,cover;background-position:center,76% center}
-.coach-photo{background-image:url('assets/pexels/hero.jpeg');background-position:center 62%}
+.coach-photo{background-image:url('assets/pexels/coach.jpeg');background-size:cover;background-position:center 42%}
 
 /* Restore the original charcoal / gold / red / brown identity and add purple as a supporting jewel. */
 :root{--bg:#11100f;--bg-soft:#191715;--panel:#201d1a;--ink:#171512;--paper:#e9e1d4;--paper-2:#d9cbb5;--cream:#f2eee7;--muted:#9e968a;--gold:#cfad66;--gold-light:#e5cc91;--red:#a44642;--plum:#795b80;--brown:#6a4b38;--purple:#9672b7;--blue:#6379a1;--rule:rgba(239,229,211,.17);color-scheme:dark;scrollbar-color:var(--gold) var(--bg-soft)}
