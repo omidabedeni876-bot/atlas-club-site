@@ -41,3 +41,6 @@ Individual photos are bundled locally in `assets/pexels/` for reliable display. 
 - Internal font metadata directs users to obtain a license from FontIran and lists https://irfont.ir/licenses/.
 - The user reports verbal permission for web use; no written license file was provided.
 - Source archive: `Nimkat [@fontbazi].zip`, supplied by the user. The original archive remains in the user's Downloads folder.
+## Training video
+
+People running on treadmills at the gym, Mixkit item 100530. Source: https://mixkit.co/free-stock-video/people-running-on-treadmills-at-the-gym-100530/ . Stock Video Free License: https://mixkit.co/license/ . Used as integrated website footage.

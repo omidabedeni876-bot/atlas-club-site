@@ -46,6 +46,10 @@ const i18n = {
   }
 };
 
+Object.assign(i18n.fa, { light_theme:"حالت روشن", club_name:"باشگاه ورزشی اطلس", access_title:"دسترسی سریع", film_pause:"توقف ویدئو", film_play:"پخش ویدئو" });
+Object.assign(i18n.en, { light_theme:"Light mode", club_name:"Atlas Training Club", access_title:"Quick access", film_pause:"Pause video", film_play:"Play video" });
+Object.assign(i18n.ar, { light_theme:"الوضع الفاتح", club_name:"نادي أطلس الرياضي", access_title:"الوصول السريع", film_pause:"إيقاف الفيديو", film_play:"تشغيل الفيديو" });
+
 let activeLang = "fa";
 const byId = (id) => document.getElementById(id);
 const translate = (key) => (i18n[activeLang] && i18n[activeLang][key]) || i18n.fa[key] || key;
@@ -56,6 +60,8 @@ function setLanguage(lang) {
   document.documentElement.dir = activeLang === "en" ? "ltr" : "rtl";
   document.body.lang = activeLang;
   document.title = translate("title");
+  syncFilmLabel();
+  byId("nav-toggle").setAttribute("aria-label", translate("nav_menu"));
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const text = translate(node.dataset.i18n);
     if (text !== node.dataset.i18n) node.innerHTML = text;
@@ -97,7 +103,7 @@ sectionMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click
 document.addEventListener("click", (event) => {
   if (!sectionMenu.hidden && !sectionMenu.contains(event.target) && !navToggle.contains(event.target)) closeSectionMenu();
 });
-document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeSectionMenu(); });
+document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !sectionMenu.hidden) { closeSectionMenu(); navToggle.focus(); } });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealNodes = document.querySelectorAll(".reveal");
@@ -139,42 +145,68 @@ if ("IntersectionObserver" in window && !reducedMotion) {
   document.querySelectorAll("[data-step]").forEach((step) => stepsObserver.observe(step));
 }
 
-let scrollFrame = 0;
-const motionGsap = window.gsap;
-const motionClamp = motionGsap?.utils?.clamp || ((min, max, value) => Math.max(min, Math.min(max, value)));
-const scrollPhotos = [...document.querySelectorAll("[data-scroll-photo]")];
-const heroPhoto = document.querySelector(".hero-photo");
-if (!reducedMotion) scrollPhotos.forEach((photo) => motionGsap?.set(photo, { clipPath: "inset(0 42% 0 42%)", scale: 1.035, transformOrigin: "center" }));
-function updateScrollMotion() {
-  if (reducedMotion || !motionGsap) return;
-  const vh = Math.max(1, innerHeight);
-  scrollPhotos.forEach((photo) => motionGsap.set(photo, {
-    clipPath: "inset(0)",
-    scale: 1,
-    force3D: true
-  }));
-  const heroRect = document.querySelector(".hero")?.getBoundingClientRect();
-  const heroProgress = heroRect ? motionClamp(0, 1, -heroRect.top / Math.max(1, heroRect.height)) : 0;
-  if (heroPhoto) motionGsap.set(heroPhoto, { y: -24 * heroProgress, scale: 1.035 + .025 * heroProgress, force3D: true });
+const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+const film = byId("training-film");
+const filmControl = byId("film-control");
+const themeSwitch = byId("theme-switch");
+let filmAllowed = null;
+let filmVisible = true;
+
+function syncFilmLabel() {
+  const playing = !film.paused;
+  filmControl.dataset.playing = String(playing);
+  filmControl.querySelector("span").textContent = translate(playing ? "film_pause" : "film_play");
 }
-window.addEventListener("scroll", () => {
-  if (scrollFrame) return;
-  scrollFrame = requestAnimationFrame(() => {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    const progress = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
-    byId("read-progress").style.transform = `scaleX(${progress})`;
-    updateScrollMotion();
-    scrollFrame = 0;
-  });
-}, { passive: true });
-updateScrollMotion();
+
+function updateFilm() {
+  if (!(filmAllowed ?? !motionPreference.matches) || !filmVisible || document.hidden || document.body.dataset.view !== "home") {
+    film.pause();
+    return;
+  }
+  if (!film.hasAttribute("src")) film.src = film.dataset.src;
+  film.play().catch(syncFilmLabel);
+}
+
+function setTheme(light) {
+  document.documentElement.dataset.theme = light ? "light" : "dark";
+  themeSwitch.setAttribute("aria-checked", String(light));
+  document.querySelector('meta[name="theme-color"]').content = light ? "#f8f4ed" : "#11100f";
+  try { localStorage.setItem("atlas-theme", light ? "light" : "dark"); } catch {}
+}
+
+setTheme(document.documentElement.dataset.theme === "light");
+themeSwitch.addEventListener("click", () => setTheme(themeSwitch.getAttribute("aria-checked") !== "true"));
+filmControl.hidden = false;
+filmControl.addEventListener("click", () => {
+  filmAllowed = film.paused;
+  updateFilm();
+});
+film.addEventListener("playing", syncFilmLabel);
+film.addEventListener("pause", syncFilmLabel);
+film.addEventListener("error", () => { filmControl.hidden = true; });
+motionPreference.addEventListener("change", () => { filmAllowed = null; updateFilm(); });
+document.addEventListener("visibilitychange", updateFilm);
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver(([entry]) => {
+    filmVisible = entry.isIntersecting;
+    updateFilm();
+  }).observe(film);
+}
+
+function updateProgress() {
+  const range = document.documentElement.scrollHeight - innerHeight;
+  byId("read-progress").style.transform = `scaleX(${range > 0 ? Math.min(1, Math.max(0, scrollY / range)) : 0})`;
+}
+window.addEventListener("scroll", updateProgress, { passive:true });
 
 const viewByDestination = {
   home:"home", method:"method", journey:"journey", programs:"programs", schedule:"schedule",
   dashboard:"progress", timer:"timer", coaches:"coaches", fuel:"fuel", join:"join", closing:"closing"
 };
-function applyCurrentView() {
-  const destination = decodeURIComponent(location.hash.slice(1)) || "home";
+function applyCurrentView(moveFocus = false) {
+  let destination = location.hash.slice(1) || "home";
+  try { destination = decodeURIComponent(destination); } catch {}
+  if (!Object.hasOwn(viewByDestination, destination)) destination = "home";
   const view = viewByDestination[destination] || "home";
   document.body.dataset.view = view;
   sectionMenu.querySelectorAll("a").forEach((link) => {
@@ -186,23 +218,28 @@ function applyCurrentView() {
     else link.removeAttribute("aria-current");
   });
   closeSectionMenu();
-  window.scrollTo({ top: 0, behavior: "auto" });
-  const target = destination === "home" ? byId("home-access") : byId(destination);
+  window.scrollTo({ top: 0, behavior: "instant" });
+  const target = destination === "home" ? document.querySelector(".hero") : byId(destination) || document.querySelector(".timer-feature");
   if (target) {
-    target.setAttribute("tabindex", "-1");
-    target.focus({ preventScroll: true });
+    target.classList.remove("route-arrive");
+    requestAnimationFrame(() => target.classList.add("route-arrive"));
+    if (moveFocus === true) {
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+    }
   }
-  requestAnimationFrame(updateScrollMotion);
+  updateProgress();
+  updateFilm();
 }
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a[href^='#']");
-  if (!link) return;
+  if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
   const destination = link.getAttribute("href").slice(1);
   if (!(destination in viewByDestination)) return;
   event.preventDefault();
   const nextHash = `#${destination}`;
   if (location.hash !== nextHash) history.pushState(null, "", nextHash);
-  applyCurrentView();
+  applyCurrentView(true);
 });
 window.addEventListener("popstate", applyCurrentView);
 window.addEventListener("hashchange", applyCurrentView);
@@ -294,11 +331,14 @@ document.querySelectorAll("[data-add]").forEach((button) => button.addEventListe
 
 const modal = byId("lead-modal");
 let selectedTier = "";
+let modalTrigger;
 function updateModalHeading() {
   const key = selectedTier ? `modal_title_${selectedTier}` : "modal_title";
   byId("lead-title").textContent = translate(key);
 }
 function openModal(tier = "") {
+  modalTrigger = document.activeElement;
+  byId("form-result").textContent = "";
   selectedTier = tier;
   updateModalHeading();
   modal.classList.add("is-open");
@@ -310,11 +350,20 @@ function closeModal() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-active");
+  modalTrigger?.focus();
 }
 document.querySelectorAll("[data-open-lead]").forEach((button) => button.addEventListener("click", () => openModal(button.dataset.tier || "")));
 byId("modal-close").addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
 document.addEventListener("keydown", (event) => { if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal(); });
+modal.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const controls = [...modal.querySelectorAll("button:not(:disabled), input, select")];
+  const edge = event.shiftKey ? controls[0] : controls.at(-1);
+  if (document.activeElement !== edge) return;
+  event.preventDefault();
+  (event.shiftKey ? controls.at(-1) : controls[0]).focus();
+});
 byId("lead-form").addEventListener("submit", (event) => {
   event.preventDefault();
   byId("form-result").textContent = translate("form_result");
@@ -322,5 +371,5 @@ byId("lead-form").addEventListener("submit", (event) => {
   window.setTimeout(() => { byId("lead-form").querySelector("button[type='submit']").disabled = false; }, 1600);
 });
 
-window.addEventListener("storage", (event) => { if (i18n[event.newValue]) setLanguage(event.newValue); });
+window.addEventListener("storage", (event) => { if (event.key === "atlas-lang" && i18n[event.newValue]) setLanguage(event.newValue); });
 try { setLanguage(localStorage.getItem("atlas-lang") || "fa"); } catch { setLanguage("fa"); }

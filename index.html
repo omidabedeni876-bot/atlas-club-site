@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11100f">
+  <script>
+    try {
+      if (localStorage.getItem("atlas-theme") === "light") document.documentElement.dataset.theme = "light";
+    } catch {}
+  </script>
   <meta name="description" content="ATLAS CLUB — تمرین، همراهی مربی و مسیر پیشرفت در یک تجربهٔ باشگاهی.">
   <title>ATLAS CLUB — باشگاه تمرین و تندرستی</title>
   <link rel="preload" href="assets/fonts/Vazirmatn-wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/Manrope-wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/Nimkat-Medium.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/hero/atlas-club-hero.jpg" as="image" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=atlas-ui-20261118-09"><link rel="stylesheet" href="atlas-hero.css?v=atlas-ui-20261118-09"><script defer src="assets/vendor/gsap.min.js"></script><script defer src="app.js?v=atlas-ui-20261118-03"></script>
+  <link rel="stylesheet" href="styles.css?v=atlas-2611"><link rel="stylesheet" href="atlas-hero.css?v=atlas-2611"><script defer src="assets/vendor/gsap.min.js"></script><script defer src="app.js?v=atlas-2611"></script>
 </head>
 <body data-view="home">
   <div class="read-progress" aria-hidden="true"><span id="read-progress"></span></div>
@@ -18,29 +23,29 @@
     <nav class="main-nav" id="main-nav" aria-label="Primary navigation"><a href="#method" data-i18n="nav_method">باشگاه</a><a href="#programs" data-i18n="nav_programs">برنامه‌ها</a><a href="#dashboard" data-i18n="nav_progress">پیشرفت</a><a href="#fuel" data-i18n="nav_fuel">خوراک و بازیابی</a></nav>
     <div class="top-actions"><div class="locale" role="group" aria-label="Language"><button data-lang="fa" aria-pressed="true">فا</button><button data-lang="en" aria-pressed="false">EN</button><button data-lang="ar" aria-pressed="false">ع</button></div><button class="nav-cta" data-open-lead><span data-i18n="nav_cta">جلسهٔ آشنایی</span></button><button class="nav-toggle" id="nav-toggle" aria-label="بخش‌ها" aria-controls="section-menu" aria-expanded="false"><span class="nav-toggle-icon" aria-hidden="true"><img class="menu-art" src="assets/icons/menu.svg" alt=""><img class="close-art" src="assets/icons/x.svg" alt=""></span><span data-i18n="nav_menu">بخش‌ها</span></button></div>
     <nav class="section-menu" id="section-menu" aria-label="بخش‌های تخصصی" hidden>
+      <button class="theme-switch" id="theme-switch" type="button" role="switch" aria-checked="false"><i class="icon theme-icon" aria-hidden="true"></i><span data-i18n="light_theme">حالت روشن</span><span class="switch-track" aria-hidden="true"></span></button>
       <a href="#home" data-i18n="nav_home">صفحهٔ اصلی</a><a href="#method" data-i18n="nav_method">باشگاه</a><a href="#journey" data-i18n="nav_journey">مسیر تمرین</a><a href="#programs" data-i18n="nav_programs">برنامه‌ها</a><a href="#schedule" data-i18n="nav_schedule">برنامهٔ هفتگی</a><a href="#dashboard" data-i18n="nav_progress">پیشرفت</a><a href="#timer" data-i18n="nav_timer">تایمر تمرین</a><a href="#coaches" data-i18n="nav_coaches">مربیان</a><a href="#fuel" data-i18n="nav_fuel">خوراک و بازیابی</a><a href="#join" data-i18n="nav_join">عضویت</a>
     </nav>
   </header>
 
   <main id="home">
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-photo" role="img" aria-label="تصویر اختصاصی باشگاه اطلس؛ گروهی از ورزشکاران با پوشش ورزشی کامل در تمرین گروهی"></div><div class="hero-shade"></div>
-      <div class="hero-topline"><span>AT—01 / TRAINING CLUB</span><span class="hero-status"><i></i><span data-i18n="hero_status">فضا برای حرکت</span></span></div>
       <div class="hero-content">
-        <p class="eyebrow"><span class="eyebrow-mark"></span><span data-i18n="hero_kicker">تمرین، همراهی، تداوم</span></p>
+        <p class="eyebrow"><span class="eyebrow-mark"></span><span data-i18n="club_name">باشگاه ورزشی اطلس</span></p>
         <h1 id="hero-heading" data-i18n="hero_title">قدرتی که<br><em>از تو شروع می‌شود.</em></h1>
         <p class="hero-copy" data-i18n="hero_copy">تمرین هدفمند، برنامهٔ شخصی و همراهی مربی؛ در فضایی که برای زندگی واقعی طراحی شده.</p>
-        <div class="hero-actions"><button class="button button-gold" data-open-lead><span data-i18n="hero_cta">مسیرم را شروع کنم</span></button><a class="button button-quiet" href="#method"><span data-i18n="hero_link">با اطلس آشنا شو</span></a></div>
+        <div class="hero-actions"><a class="button button-gold" href="#programs"><span data-i18n="nav_programs">برنامه‌ها</span><i class="icon icon-next" aria-hidden="true"></i></a><a class="button button-quiet" href="#schedule"><span data-i18n="nav_schedule">برنامهٔ هفتگی</span></a></div>
       </div>
-      <div class="hero-side-note"><span>01</span><span class="side-rule"></span><span data-i18n="hero_side">یک قدم، بعد قدم بعدی.</span></div>
-      <div class="hero-index">STRENGTH / MOVEMENT / RECOVERY</div>
-      <a class="hero-scroll" href="#method"><span data-i18n="scroll_discover">برای کشف اسکرول کن</span><i></i></a>
+      <div class="hero-film">
+        <video id="training-film" muted loop playsinline preload="none" poster="assets/hero/atlas-club-hero.jpg" data-src="assets/hero/training.mp4" aria-hidden="true"></video>
+        <button class="film-control" id="film-control" type="button" hidden><i class="icon film-icon" aria-hidden="true"></i><span></span></button>
+      </div>
     </section>
 
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>MOVE WITH PURPOSE</span><span data-i18n="ticker_a">تمرین با هدف</span><span>RECOVER WITH CARE</span><span data-i18n="ticker_b">پیشرفت در ریتم تو</span><span>MOVE WITH PURPOSE</span><span data-i18n="ticker_a">تمرین با هدف</span><span>RECOVER WITH CARE</span></div></div>
 
     <section class="home-access section-wrap" id="home-access" aria-labelledby="home-access-title">
-      <div class="home-access-heading"><span class="home-access-kicker">ATLAS / QUICK ROUTES</span><h2 id="home-access-title" data-i18n="access_title">بخش موردنیازت را مستقیم باز کن.</h2></div>
+      <div class="home-access-heading"><h2 id="home-access-title" data-i18n="access_title">دسترسی سریع</h2></div>
       <div class="home-access-grid">
         <a class="home-access-card access-training" href="#programs"><span class="access-number">01</span><span class="access-copy"><strong data-i18n="access_training">شیوه‌های تمرین</strong><small data-i18n="access_training_copy">تمرین مناسب خودت را پیدا کن.</small></span><i class="icon icon-external-link access-arrow" aria-hidden="true"></i></a>
         <a class="home-access-card access-schedule" href="#schedule"><span class="access-number">02</span><span class="access-copy"><strong data-i18n="access_schedule">برنامهٔ هفتگی</strong><small data-i18n="access_schedule_copy">روز و ساعت دلخواهت را ببین.</small></span><i class="icon icon-external-link access-arrow" aria-hidden="true"></i></a>
@@ -90,7 +95,7 @@
     <section class="dashboard-section section-wrap" id="dashboard">
       <div class="section-head"><span class="section-no">05</span><span class="section-kicker" data-i18n="dashboard_kicker">اتاق کنترل تمرین</span><span class="section-rule"></span><span class="section-english">ATLAS / PULSE</span></div>
       <div class="dashboard-heading"><div><h2 class="editorial-title reveal" data-i18n="dashboard_title">داده برای فهمیدن،<br><em>نه برای قضاوت.</em></h2><p class="dashboard-description reveal" data-i18n="dashboard_copy">نمای نمونهٔ پنل ورزشکار و مربی. داده‌ها ساختگی و صرفاً نمایشی‌اند تا جریان کار را ببینی.</p></div><div class="dashboard-switch reveal" role="group" aria-label="Choose dashboard view"><button class="is-active" data-role="athlete" data-i18n="role_athlete">ورزشکار</button><button data-role="coach" data-i18n="role_coach">مربی</button></div></div>
-      <div class="timer-feature reveal"><div class="timer-feature-copy"><span class="timer-source-mark">ANIMORIO / TRAINING TIMER</span><h3 data-i18n="timer_title">استراحت را ثبت کن.<br><em>تمرین را ادامه بده.</em></h3><p data-i18n="timer_copy">تایمر ست و استراحت برگرفته از نمونهٔ اصلی Animorio؛ با ثبت ست، زمان استراحت و حجم تمرین را دنبال کن.</p></div><iframe class="timer-frame" title="Interactive workout rest timer from Animorio" src="assets/animorio/gym-rest-timer/index.html" loading="lazy" data-atlas-timer></iframe></div>
+      <div class="timer-feature reveal" id="timer"><div class="timer-feature-copy"><span class="timer-source-mark">ANIMORIO / TRAINING TIMER</span><h3 data-i18n="timer_title">استراحت را ثبت کن.<br><em>تمرین را ادامه بده.</em></h3><p data-i18n="timer_copy">تایمر ست و استراحت برگرفته از نمونهٔ اصلی Animorio؛ با ثبت ست، زمان استراحت و حجم تمرین را دنبال کن.</p></div><iframe class="timer-frame" title="Interactive workout rest timer from Animorio" src="assets/animorio/gym-rest-timer/index.html" loading="lazy" data-atlas-timer></iframe></div>
       <div class="pulse-app reveal"><div class="pulse-top"><div class="pulse-logo"><span></span><b>ATLAS / PULSE</b><small data-i18n="demo_badge">دادهٔ نمونه</small></div><span class="pulse-profile"><i class="profile-dot">A</i><span data-i18n="demo_profile">حساب نمایشی</span></span></div>
         <div class="pulse-body"><aside class="pulse-rail"><span class="rail-selected"><i class="icon icon-house"></i></span><span><i class="icon icon-chart"></i></span><span><i class="icon icon-calendar"></i></span><span><i class="icon icon-users"></i></span></aside>
           <div class="pulse-content"><div class="pulse-greeting"><div><span class="micro-label" id="pulse-view-label" data-i18n="athlete_view">نمای ورزشکار</span><h3 id="pulse-greeting" data-i18n="pulse_greeting_athlete">امروز چطور پیش می‌رویم؟</h3></div><div class="period-switch" role="group" aria-label="Activity period"><button class="is-active" data-period="week" data-i18n="period_week">هفته</button><button data-period="month" data-i18n="period_month">ماه</button></div></div>
