@@ -46,9 +46,9 @@ const i18n = {
   }
 };
 
-Object.assign(i18n.fa, { light_theme:"حالت روشن", club_name:"باشگاه ورزشی اطلس", access_title:"دسترسی سریع", film_pause:"توقف ویدئو", film_play:"پخش ویدئو" });
-Object.assign(i18n.en, { light_theme:"Light mode", club_name:"Atlas Training Club", access_title:"Quick access", film_pause:"Pause video", film_play:"Play video" });
-Object.assign(i18n.ar, { light_theme:"الوضع الفاتح", club_name:"نادي أطلس الرياضي", access_title:"الوصول السريع", film_pause:"إيقاف الفيديو", film_play:"تشغيل الفيديو" });
+Object.assign(i18n.fa, { light_theme:"حالت روشن", club_name:"باشگاه ورزشی اطلس", access_title:"دسترسی سریع" });
+Object.assign(i18n.en, { light_theme:"Light mode", club_name:"Atlas Training Club", access_title:"Quick access" });
+Object.assign(i18n.ar, { light_theme:"الوضع الفاتح", club_name:"نادي أطلس الرياضي", access_title:"الوصول السريع" });
 
 let activeLang = "fa";
 const byId = (id) => document.getElementById(id);
@@ -60,7 +60,6 @@ function setLanguage(lang) {
   document.documentElement.dir = activeLang === "en" ? "ltr" : "rtl";
   document.body.lang = activeLang;
   document.title = translate("title");
-  syncFilmLabel();
   byId("nav-toggle").setAttribute("aria-label", translate("nav_menu"));
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const text = translate(node.dataset.i18n);
@@ -147,24 +146,16 @@ if ("IntersectionObserver" in window && !reducedMotion) {
 
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
 const film = byId("training-film");
-const filmControl = byId("film-control");
 const themeSwitch = byId("theme-switch");
-let filmAllowed = null;
 let filmVisible = true;
 
-function syncFilmLabel() {
-  const playing = !film.paused;
-  filmControl.dataset.playing = String(playing);
-  filmControl.querySelector("span").textContent = translate(playing ? "film_pause" : "film_play");
-}
-
 function updateFilm() {
-  if (!(filmAllowed ?? !motionPreference.matches) || !filmVisible || document.hidden || document.body.dataset.view !== "home") {
+  if (motionPreference.matches || !filmVisible || document.hidden || document.body.dataset.view !== "home") {
     film.pause();
     return;
   }
   if (!film.hasAttribute("src")) film.src = film.dataset.src;
-  film.play().catch(syncFilmLabel);
+  film.play().catch(() => {});
 }
 
 function setTheme(light) {
@@ -176,15 +167,7 @@ function setTheme(light) {
 
 setTheme(document.documentElement.dataset.theme === "light");
 themeSwitch.addEventListener("click", () => setTheme(themeSwitch.getAttribute("aria-checked") !== "true"));
-filmControl.hidden = false;
-filmControl.addEventListener("click", () => {
-  filmAllowed = film.paused;
-  updateFilm();
-});
-film.addEventListener("playing", syncFilmLabel);
-film.addEventListener("pause", syncFilmLabel);
-film.addEventListener("error", () => { filmControl.hidden = true; });
-motionPreference.addEventListener("change", () => { filmAllowed = null; updateFilm(); });
+motionPreference.addEventListener("change", updateFilm);
 document.addEventListener("visibilitychange", updateFilm);
 if ("IntersectionObserver" in window) {
   new IntersectionObserver(([entry]) => {

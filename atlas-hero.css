@@ -160,10 +160,6 @@ body .hero h1 { text-shadow:none; }
 .icon-next { mask-image:url('assets/icons/external-link.svg'); width:16px; height:16px; }
 .hero-film { position:relative; aspect-ratio: 5/4; overflow:hidden; border:1px solid var(--edge); border-radius:18px; background:#201813; }
 .hero-film video { width:100%; height:100%; object-fit:cover; object-position:60% center; display:block; }
-.film-control { position:absolute; inset-inline-end:12px; bottom:12px; display:flex; align-items:center; gap:8px; min-height:44px; padding-inline:12px; border:1px solid #ffffff60; border-radius:8px; background:#15100ee8; color:white; font-size:12px; }
-.film-control[hidden] { display:none; }
-.film-icon { width:15px; height:15px; mask-image:url('assets/icons/play.svg'); }
-.film-control[data-playing="true"] .film-icon { mask-image:none; background:none; border-inline:4px solid currentColor; width:11px; }
 .home-access { padding:clamp(28px,4vw,54px) 0; }
 .home-access-card { border-radius:12px; min-height:140px; }
 .access-copy strong { font-size:15px; }
@@ -216,4 +212,30 @@ main :is(.program-grid,.fuel-grid,.membership-grid,.pulse-app,.coach-layout,.jou
   .home-access-card { min-height:85px; }
   .access-copy small { display:none; }
   .program-photo { height:clamp(150px,42vw,230px); }
+}
+/* Warm surfaces, clearer navigation and restrained accents in both themes. */
+body {
+  background: radial-gradient(ellipse at 82% 0%, #33232b 0, transparent 38rem), var(--bg);
+}
+html[data-theme="light"] body {
+  background: radial-gradient(ellipse at 82% 0%, #efdfd7 0, transparent 38rem), var(--bg);
+}
+header.topbar {
+  background: var(--menu);
+  border-bottom: 1px solid var(--edge);
+}
+.main-nav a { font-size: 13px; padding-block: 10px; }
+.main-nav a[aria-current="page"] { font-weight: 700; }
+.nav-toggle { background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; font-size: 12px; }
+.nav-toggle:hover, .theme-switch:hover { border-color: var(--gold); }
+.read-progress { height: 3px; }
+.read-progress span { background: linear-gradient(90deg, var(--purple), var(--gold), var(--red)); }
+.hero-film { box-shadow: 0 14px 35px #17101322; }
+.home-access { border-bottom-color: var(--edge); }
+.home-access-heading h2 { font-weight: 650; }
+.footer { border-top: 1px solid var(--edge); }
+html[data-theme="light"] { scrollbar-color: #9c765b var(--bg-soft); }
+@media (max-width: 760px) {
+  .section-menu { inset-inline: var(--gutter); }
+  .section-menu a { line-height: 1.5; }
 }
